@@ -13,8 +13,11 @@
 		"isolatedModules": true,
 		"jsx": "preserve",
 		"incremental": true,
-		"baseUrl": "./app",
+		"baseUrl": "app",
 		"paths": {
+			"@/layout/*": ["components/layout/*"],
+			"@/ui/*": ["components/ui/*"],
+			"@/screens/*": ["components/screens/*"],
 			"@/*": ["./*"]
 		}
 	},
