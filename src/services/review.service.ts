@@ -15,26 +15,6 @@ export const ReviewService = {
 			method: 'GET'
 		})
 	},
-	async getById(id: string | number) {
-		return instance<IReview>({
-			url: `${REVIEWS}/${id}`,
-			method: 'GET'
-		})
-	},
-
-	async getBySlug(slug: string) {
-		return instance<IReview>({
-			url: `${REVIEWS}/by-slug/${slug}`,
-			method: 'GET'
-		})
-	},
-
-	async create() {
-		return instance<IReview>({
-			url: REVIEWS,
-			method: 'POST'
-		})
-	},
 
 	async leave(productId: string | number, data: TypeData) {
 		return instance<IReview>({
@@ -44,10 +24,4 @@ export const ReviewService = {
 		})
 	},
 
-	async delete(id: string | number, name: string) {
-		return instance<IReview>({
-			url: `${REVIEWS}/${id}`,
-			method: 'DELETE'
-		})
-	}
 }
