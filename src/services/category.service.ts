@@ -39,7 +39,7 @@ export const CategoryService = {
 		})
 	},
 	
-	async delete(id: string | number, name: string) {
+	async delete(id: string | number) {
 		return instance<ICategory>({
 			url: `${CATEGORIES}/${id}`,
 			method: 'DELETE'
