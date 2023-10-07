@@ -1,6 +1,6 @@
 export const PRODUCTS = 'products'
 
-export type TypeData = {
+export type TypeProductData = {
 	price: number
 	categoryId: number
 	name: string
@@ -8,7 +8,7 @@ export type TypeData = {
 	images: string[]
 }
 
-export type TypeDataFilters = {
+export type TypeProductDataFilters = {
 	sort?: EnumProductSort
 	searchTerm?: string
 	page?: string | number
