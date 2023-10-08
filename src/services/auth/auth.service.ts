@@ -7,8 +7,7 @@ import { instance } from '@/api/api.interceptor'
 
 export const AuthService = {
 	async main(type: 'login' | 'register', data: IEmailPassword) {
-		const response = await instance
-		<IAuthResponse>({
+		const response = await instance<IAuthResponse>({
 			url: `/auth/${type}`,
 			method: 'POST',
 			data
@@ -28,6 +27,8 @@ export const AuthService = {
 		)
 
 		if (response.data.accessToken) saveToStorage(response.data)
+
+		return response
 	}
 }
 export default AuthService
