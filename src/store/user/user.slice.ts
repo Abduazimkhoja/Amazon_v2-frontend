@@ -1,11 +1,10 @@
+import { getStorageLocale } from '@/utils/locale-storage'
 import { createSlice } from '@reduxjs/toolkit'
 import { checkAuth, login, logout, register } from './user.actions'
 import { IInitialState } from './user.interface'
 
 const initialState: IInitialState = {
-	user: localStorage.getItem('user')
-		? JSON.parse(localStorage.getItem('user') as string)
-		: null,
+	user: getStorageLocale('user'),
 	isLoading: false
 }
 
