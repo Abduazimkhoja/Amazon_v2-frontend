@@ -1,4 +1,4 @@
-import { Head } from 'next/document'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC, PropsWithChildren } from 'react'
 
@@ -30,12 +30,12 @@ const Meta: FC<PropsWithChildren<ISeo>> = ({
 							name='description'
 							content='description'
 						/>
-						<link rel='canonical' href={currentUrl} />
+						{/* <link rel='canonical' href={currentUrl} /> */}
 						<meta property='og:locale' content='en' />
 						<meta property='og:title' content={titleMerge(title)} />
 						<meta property='og:url' content={currentUrl} />
 						<meta property='og:image' content={image || '/favicon.svg'} />
-						{/* <meta property='og:site_name' content='site name'/> */}
+						<meta property='og:site_name' content='site name' />
 						<meta property='og:description' content={description} />
 					</>
 				) : (

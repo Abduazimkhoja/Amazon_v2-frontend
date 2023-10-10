@@ -4,7 +4,7 @@ import { FC } from 'react'
 const Auth: FC = () => {
 	return (
 		<Meta title='Auth'>
-			<Auth />
+			Auth
 		</Meta>
 	)
 }
