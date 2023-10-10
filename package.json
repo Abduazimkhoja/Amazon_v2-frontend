@@ -3,7 +3,7 @@
 	"description": "Special development",
 	"author": "Abduazimkhoja",
 	"version": "0.1.0",
-	"private": true,
+	"private": false,
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
@@ -38,5 +38,8 @@
 		"prettier-plugin-tailwindcss": "^0.5.4",
 		"tailwindcss": "^3.3.3",
 		"typescript": "latest"
-	}
+	},
+	"main": "index.js",
+	"repository": "https://github.com/Abduazimkhoja/Amazon-frontend.git",
+	"license": "MIT"
 }
