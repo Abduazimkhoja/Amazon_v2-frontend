@@ -6,8 +6,8 @@ const colors = {
 	transparent: twColors.transparent,
 	black: '#2e3239',
 	white: twColors.white,
-	secondary: '#FF9902',
-	primary: '#161D25',
+	secondary: '#161D25',
+	primary: '#FF9902',
 	'bg-color': '#F2F2F65',
 	aqua: '#268697'
 }
@@ -15,6 +15,7 @@ const colors = {
 module.exports = {
 	content: ['./src/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
 	theme: {
+		colors,
 		extend: {
 			keyframes: {
 				animationOpacity: {
