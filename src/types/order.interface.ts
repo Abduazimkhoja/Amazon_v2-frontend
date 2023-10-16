@@ -1,4 +1,4 @@
-import { ICardItem } from './card.interface'
+import { ICardItem } from './cart.interface'
 import { IUser } from './user.interface'
 
 export enum EnumOrderStatus {
