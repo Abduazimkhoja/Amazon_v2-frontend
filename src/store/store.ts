@@ -6,10 +6,11 @@ import {
 	PURGE,
 	REGISTER,
 	REHYDRATE,
-	persistStore,
-	persistReducer
+	persistReducer,
+	persistStore
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { cartSlice } from './cart/cart.slice'
 import { userSlice } from './user/user.slice'
 
 const persistConfig = {
@@ -19,7 +20,7 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-	// cart: createSlice.redcer,
+	cart: cartSlice.reducer,
 	// carousel: carouselSlice.reducer,
 	user: userSlice.reducer
 })
