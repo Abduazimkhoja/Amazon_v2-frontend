@@ -7,7 +7,7 @@ export interface IProduct {
 	slug: string
 	description: string
 	price: number
-	review: IReview[]
+	reviews: IReview[]
 	images: string[]
 	createdAt: string
 	category: ICategory
@@ -18,5 +18,10 @@ export interface IProductDetails {
 }
 
 export type TypeProducts = {
+	products: IProduct[]
+}
+
+export type TypePaginationProducts = {
+	length: number
 	products: IProduct[]
 }
