@@ -23,7 +23,7 @@ const ProductRating: FC<{ product: IProduct }> = ({ product }) => {
 				allowFraction
 				transition
 			/>
-			<span>({product.review.length} reviews)</span>
+			<span>({product.reviews.length} reviews)</span>
 		</div>
 	)
 }
