@@ -7,5 +7,5 @@ export const useProfile = () => {
 		select: ({ data }) => data
 	})
 
-	return { profile: data || ({} as IFullUser) }
+	return { profile: data }
 }
