@@ -6,6 +6,7 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
 const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
 	const { profile } = useProfile()
+	if (!profile) return null
 	const { invalidateQueries } = useQueryClient()
 
 	const { mutate } = useMutation(
