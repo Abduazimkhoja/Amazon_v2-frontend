@@ -6,7 +6,7 @@ import { FC } from 'react'
 const Home: FC<TypePaginationProducts> = ({ products, length }) => {
 	return (
 		<Meta title='Home'>
-			<Catalog products={products || []} />
+			<Catalog title='Fresh products' products={products || []} />
 		</Meta>
 	)
 }
