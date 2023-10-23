@@ -19,7 +19,7 @@ const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
 
 	return (
 		<div>
-			<button onClick={addCart}>
+			<button onClick={addCart} className='text-secondary'>
 				{currentElement ? <RiShoppingCartFill /> : <RiShoppingCartLine />}
 			</button>
 		</div>
