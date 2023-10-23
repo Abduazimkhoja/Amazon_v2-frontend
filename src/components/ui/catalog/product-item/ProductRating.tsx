@@ -9,20 +9,21 @@ const ProductRating: FC<{ product: IProduct }> = ({ product }) => {
 				product.reviews.length
 		) || 0
 	)
+
 	return (
-		<div className='mb-2'> 
-			<span className='mr-1'>
-				<Rating
-					readonly
-					initialValue={rating}
-					SVGstyle={{ display: 'inline-block' }}
-					size={20}
-					allowFraction
-					transition
-				/>
-				<span style={{ color: '#ffbc0d' }}>{rating}</span>
-			</span>
-			<span>({product.reviews.length} reviews)</span>
+		<div className='mb-2 flex items-center gap-1'>
+			<Rating
+				readonly
+				initialValue={rating}
+				SVGstyle={{ display: 'inline-block' }}
+				size={15}
+				allowFraction
+				transition
+			/>
+			<h5 className='text-sm ml-1' style={{ color: '#eaa904' }}>
+				{rating}
+			</h5>
+			<h5 className='text-xs'>({product.reviews.length} reviews)</h5>
 		</div>
 	)
 }

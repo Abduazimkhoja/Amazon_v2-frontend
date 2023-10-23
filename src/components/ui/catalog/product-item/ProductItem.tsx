@@ -22,6 +22,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 						height={250}
 						src={product.images[0]}
 						alt={product.name}
+						className='w-full'
 					/>
 				</Link>
 			</div>
