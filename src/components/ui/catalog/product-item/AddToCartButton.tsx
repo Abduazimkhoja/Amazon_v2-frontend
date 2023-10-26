@@ -18,11 +18,9 @@ const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
 			: addToCart({ product, quantity: 1, price: product.price })
 
 	return (
-		<div>
-			<button onClick={addCart} className='text-secondary'>
-				{currentElement ? <RiShoppingCartFill /> : <RiShoppingCartLine />}
-			</button>
-		</div>
+		<button onClick={addCart} className='text-secondary'>
+			{currentElement ? <RiShoppingCartFill /> : <RiShoppingCartLine />}
+		</button>
 	)
 }
 
