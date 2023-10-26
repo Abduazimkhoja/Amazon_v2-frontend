@@ -11,7 +11,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 	return (
 		<div>
 			<div className='bg-white rounded-xl relative overflow-hidden'>
-				<div className='absolute top-2 right-3 z-10'>
+				<div className='flex flex-col gap-1 absolute top-2 right-3 z-10'>
 					<FavoriteButton productId={product.id} />
 					<AddToCartButton product={product} />
 				</div>
@@ -22,12 +22,12 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 						height={250}
 						src={product.images[0]}
 						alt={product.name}
-						className='w-full'
+						className='w-full brightness-50 hover:brightness-100'
 					/>
 				</Link>
 			</div>
 			<Link href={`/product/${product.slug}`}>
-				<h3 className='mt-2 font-semibold'>{product.name}</h3>
+				<h3 className='mt-2 font-semibold line-clamp-1'>{product.name}</h3>
 			</Link>
 			<Link
 				href={`/category/${product.category.slug}`}
