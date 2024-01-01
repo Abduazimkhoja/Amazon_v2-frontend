@@ -9,9 +9,9 @@ import ProductRating from './ProductRating'
 
 const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 	return (
-		<div>
+		<div className='animate-scaleIn'>
 			<div className='bg-white rounded-xl relative overflow-hidden'>
-				<div className='flex flex-col gap-1 absolute top-2 right-3 z-10'>
+				<div className='flex gap-3 absolute top-2 right-3 z-10 bg- p-2 rounded-full bg-white shadow'>
 					<FavoriteButton productId={product.id} />
 					<AddToCartButton product={product} />
 				</div>
@@ -22,7 +22,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 						height={250}
 						src={product.images[0]}
 						alt={product.name}
-						className='w-full brightness-50 hover:brightness-100'
+						className='w-full'
 					/>
 				</Link>
 			</div>
