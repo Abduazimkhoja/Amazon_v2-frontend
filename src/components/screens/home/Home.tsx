@@ -2,7 +2,8 @@ import { useAuth } from '@/hooks/useAction'
 import { useActions } from '@/hooks/useActions'
 import { TypePaginationProducts } from '@/types/product.interface'
 import Meta from '@/ui/Meta'
-import Catalog from '@/ui/catalog/Catalog'
+import Button from '@/ui/button/Button'
+import CatalogPagination from '@/ui/catalog/CatalogPagination'
 import Layout from '@/ui/layout/Layout'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
@@ -15,14 +16,23 @@ const Home: FC<TypePaginationProducts> = ({ products, length }) => {
 	return (
 		<Meta title='Home'>
 			<Layout>
-				{!!user && <button onClick={() => logout()}>Logout</button>}
-				{!user && <button onClick={() => router.push('/auth')}>Sign In</button>}
+				{!user ? (
+					<Button option='orange' onClick={() => router.push('/auth')}>
+						Sign In
+					</Button>
+				) : (
+					<Button option='orange' onClick={() => logout()}>
+						Logout
+					</Button>
+				)}
 
-				<Catalog
-					title='Fresh products'
-					products={products || []}
-					isPagination
+				<CatalogPagination title='Fresh products' data={{products, length}} />
+				{/* <img
+					src='https://qrtag.net/api/qr_transparent_6.svg?url=https://www.qrtag.net'
+					alt='qrtag'
+					
 				/>
+				<img src="https://api.qrserver.com/v1/create-qr-code/?data=youtube.com&size=100x100&format=svg&color=f00" alt="" title="" /> */}
 			</Layout>
 		</Meta>
 	)
