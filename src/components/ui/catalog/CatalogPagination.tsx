@@ -9,12 +9,12 @@ import Button from '../button/Button'
 import SortDropdown from './SortDropdown'
 import ProductItem from './product-item/ProductItem'
 
-interface ICatalog {
+interface ICatalogPagination {
 	data: TypePaginationProducts
 	title?: string
 }
 
-const CatalogPagination: FC<ICatalog> = ({ data, title }) => {
+const CatalogPagination: FC<ICatalogPagination> = ({ data, title }) => {
 	const [page, setPage] = useState(1)
 
 	const [sortType, setSortType] = useState<EnumProductSort>(
@@ -29,7 +29,7 @@ const CatalogPagination: FC<ICatalog> = ({ data, title }) => {
 				perPage: 4,
 				sort: sortType
 			}),
-		{ initialData: data }
+		{ initialData: data, keepPreviousData: true }
 	)
 
 	if (isLoading) return <Loader />
@@ -46,9 +46,19 @@ const CatalogPagination: FC<ICatalog> = ({ data, title }) => {
 						))}
 					</div>
 					<div className='text-center mt-16'>
-						<Button size='sm' onClick={() => setPage(page + 1)} option='orange'>
-							Load more
-						</Button>
+						{Array.from({ length: response.length / 4 }).map((_, index) => {
+							const pageNumber = index + 1
+							return (
+								<Button
+									size='sm'
+									option={page === pageNumber ? 'orange' : 'white'}
+									onClick={() => setPage(pageNumber)}
+									className='mx-3'
+								>
+									{pageNumber}
+								</Button>
+							)
+						})}
 					</div>
 				</>
 			) : (
