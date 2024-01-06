@@ -50,6 +50,7 @@ const CatalogPagination: FC<ICatalogPagination> = ({ data, title }) => {
 							const pageNumber = index + 1
 							return (
 								<Button
+									key={pageNumber}
 									size='sm'
 									option={page === pageNumber ? 'orange' : 'white'}
 									onClick={() => setPage(pageNumber)}
