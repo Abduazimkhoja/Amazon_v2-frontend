@@ -1,6 +1,8 @@
 import { ICartItem } from '@/types/cart.interface'
 import { convertPrice } from '@/utils/convertPrice'
+import Image from 'next/image'
 import { FC } from 'react'
+import styles from '../cart.module.scss'
 import CartActions from './cart-action/cartAction'
 
 const CartItem: FC<{ item: ICartItem }> = ({ item }) => {
@@ -12,7 +14,7 @@ const CartItem: FC<{ item: ICartItem }> = ({ item }) => {
 				height={100}
 				alt={item.product.name}
 			/>
-			<div>
+			<div className='whitespace-nowrap overflow-hidden'>
 				<div className={styles.name}>{item.product.name}</div>
 				<div className={styles.price}>{convertPrice(item.product.price)}</div>
 				<CartActions item={item} />
