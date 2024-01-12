@@ -1,0 +1,31 @@
+.cart {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+
+   img {
+      border-radius: 5px;
+   }
+}
+.footer {
+   display: flex;
+   justify-content: space-between;
+   font-size: 18px;
+   font-weight: 600;
+   margin-top: 20px;
+}
+
+.item {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.name {
+   overflow: hidden;
+
+   text-overflow: ellipsis;
+}
+
+.price {
+}
