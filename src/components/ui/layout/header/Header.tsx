@@ -3,13 +3,14 @@ import Link from 'next/link'
 import { FC } from 'react'
 import { AiOutlineHeart } from 'react-icons/ai'
 import HeaderCart from '../cart/HeaderCart'
-// import Search from './Search'
+import HeaderProfile from './HeaderProfile'
+import Search from './Search'
 
 const Header: FC = () => {
 	return (
 		<header
-			className='bg-secondary w-full py-6 px-6 grid'
-			style={{ gridTemplateColumns: '1fe 3fr 1.2fr' }}
+			className='bg-secondary w-full p-6 grid'
+			style={{ gridTemplateRows: '1fe 3fr 1.2fr' }}
 		>
 			<Link href='/'>
 				<Image
@@ -21,13 +22,13 @@ const Header: FC = () => {
 					alt='Amazon v2'
 				/>
 			</Link>
-			{/* <Search /> */}
+			<Search />
 			<div className='flex items-center justify-end gap-10'>
 				<Link href='/favorites' className='text-white'>
 					<AiOutlineHeart size={28} />
 				</Link>
 				<HeaderCart />
-				{/* <HeaderProfile /> */}
+				<HeaderProfile />
 			</div>
 		</header>
 	)
