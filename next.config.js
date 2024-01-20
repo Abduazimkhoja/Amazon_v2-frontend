@@ -6,7 +6,14 @@ const nextConfig = {
 		SERVER_URL: process.env.SERVER_URL,
 		APP_URL: process.env.APP_URL
 	},
-	images: {domains: ['ae01.alicdn.com', 'picsum.photos', 'loremflickr.com']}
+	images: {
+		domains: [
+			'ae01.alicdn.com',
+			'picsum.photos',
+			'loremflickr.com',
+			'avatars.githubusercontent.com'
+		]
+	}
 }
 
 module.exports = nextConfig
