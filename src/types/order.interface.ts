@@ -1,4 +1,4 @@
-import { ICardItem } from './cart.interface'
+import { ICartItem } from './cart.interface'
 import { IUser } from './user.interface'
 
 export enum EnumOrderStatus {
@@ -11,7 +11,7 @@ export enum EnumOrderStatus {
 export interface IOrder {
 	id: number
 	createdAt: string
-	items: ICardItem[]
+	items: ICartItem[]
 	status: EnumOrderStatus
 	user: IUser
 }
