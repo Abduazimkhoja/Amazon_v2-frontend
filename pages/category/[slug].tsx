@@ -20,7 +20,7 @@ const CategoryPage: NextPage<{ products: IProduct[]; category: ICategory }> = ({
 	)
 }
 
-export const getStaticPath: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
 	const categories = await CategoryService.getAll()
 
 	const paths = categories.data.map(category => {
