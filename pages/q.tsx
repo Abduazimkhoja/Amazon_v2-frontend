@@ -9,16 +9,16 @@ import { useRouter } from 'next/router'
 const SearchPage: NextPage = () => {
 	const { query } = useRouter()
 
-	const { data } = useQuery(['search products', query.term], () => {
+	const { data } = useQuery(['search products', query.term], () =>
 		ProductService.getAll({ searchTerm: query.term as string })
-	})
+	)
 
 	return (
 		<Meta title='Поиск'>
 			<Layout>
 				<Catalog
 					products={data?.products || []}
-					title={`Поиск по запросу ${query.term || ''}}`}
+					title={`Поиск по запросу ${query.term}`}
 				/>
 			</Layout>
 		</Meta>
