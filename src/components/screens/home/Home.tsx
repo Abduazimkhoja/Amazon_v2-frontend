@@ -16,23 +16,13 @@ const Home: FC<TypePaginationProducts> = ({ products, length }) => {
 	return (
 		<Meta title='Home'>
 			<Layout>
-				{!user ? (
+				{!user && (
 					<Button option='orange' onClick={() => router.push('/auth')}>
 						Sign In
 					</Button>
-				) : (
-					<Button option='orange' onClick={() => logout()}>
-						Logout
-					</Button>
 				)}
 
-				<CatalogPagination title='Fresh products' data={{products, length}} />
-				{/* <img
-					src='https://qrtag.net/api/qr_transparent_6.svg?url=https://www.qrtag.net'
-					alt='qrtag'
-					
-				/>
-				<img src="https://api.qrserver.com/v1/create-qr-code/?data=youtube.com&size=100x100&format=svg&color=f00" alt="" title="" /> */}
+				<CatalogPagination title='Fresh products' data={{ products, length }} />
 			</Layout>
 		</Meta>
 	)
