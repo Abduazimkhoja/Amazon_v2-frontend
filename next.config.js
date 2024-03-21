@@ -11,7 +11,8 @@ const nextConfig = {
 			'ae01.alicdn.com',
 			'picsum.photos',
 			'loremflickr.com',
-			'avatars.githubusercontent.com'
+			'avatars.githubusercontent.com',
+			'cloudflare-ipfs.com'
 		]
 	}
 }
