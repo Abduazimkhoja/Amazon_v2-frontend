@@ -1,5 +1,5 @@
 import { useAuth } from '@/hooks/useAction'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 export const useAuthREdirect = () => {
