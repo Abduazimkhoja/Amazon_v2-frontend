@@ -4,7 +4,7 @@ const nextConfig = {
 	reactStrictMode: true,
 	env: {
 		SERVER_URL: process.env.SERVER_URL,
-		APP_URL: process.env.APP_URL
+		APP_URL: process.env.APP_URL,
 	},
 	images: {
 		domains: [
@@ -12,9 +12,15 @@ const nextConfig = {
 			'picsum.photos',
 			'loremflickr.com',
 			'avatars.githubusercontent.com',
-			'cloudflare-ipfs.com'
+			'cloudflare-ipfs.com',
 		]
-	}
+	},
+  async rewrites() {
+    return [{
+      source: `/uploads/:path*`,
+      destination: 'http://localhost:4200/uploads/:path*'
+    }]
+  }
 }
 
 module.exports = nextConfig
