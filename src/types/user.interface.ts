@@ -1,5 +1,5 @@
-import { IOrder } from "./order.interface"
-import { IProduct } from "./product.interface"
+import { IOrder } from './order.interface'
+import { IProduct } from './product.interface'
 
 export interface IUser {
 	id: number
@@ -7,6 +7,7 @@ export interface IUser {
 	name: string
 	avatarPath: string
 	phone: string
+	isAdmin: boolean
 }
 
 export interface IFullUser extends IUser {
