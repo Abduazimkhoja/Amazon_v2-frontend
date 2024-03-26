@@ -6,17 +6,18 @@ import styles from '../cart.module.scss'
 import CartActions from './cart-action/cartAction'
 
 const CartItem: FC<{ item: ICartItem }> = ({ item }) => {
+	const { images, name, price } = item.product
 	return (
 		<div className={styles.item}>
 			<Image
-				src={item.product.images[0]}
+				src={images[0]}
 				width={100}
 				height={100}
-				alt={item.product.name}
+				alt={name}
 			/>
 			<div className='whitespace-nowrap overflow-hidden'>
-				<div className={styles.name}>{item.product.name}</div>
-				<div className={styles.price}>{convertPrice(item.product.price)}</div>
+				<div className={styles.name}>{name}</div>
+				<div className={styles.price}>{convertPrice(price)}</div>
 				<CartActions item={item} />
 			</div>
 		</div>
