@@ -21,16 +21,16 @@ const CatalogPagination: FC<ICatalogPagination> = ({ data, title }) => {
 		EnumProductSort.NEWEST
 	)
 
-	const { data: response, isLoading } = useQuery(
-		['products', sortType, page],
-		() =>
+	const { data: response, isLoading } = useQuery({
+		queryKey: ['products', sortType, page],
+		queryFn: () =>
 			ProductService.getAll({
 				page,
 				perPage: 8,
 				sort: sortType
 			}),
-		{ initialData: data, keepPreviousData: true }
-	)
+		...{ initialData: data, keepPreviousData: true }
+	})
 
 	if (isLoading) return <Loader />
 

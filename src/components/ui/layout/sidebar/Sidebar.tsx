@@ -5,17 +5,17 @@ import Loader from '@/ui/Loader'
 import { useQuery } from '@tanstack/react-query'
 import cn from 'clsx'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { FC } from 'react'
 import { FiLogOut } from 'react-icons/fi'
 
 const Sidebar: FC = () => {
-	const { data, isLoading } = useQuery(
-		['get categories'],
-		() => CategoryService.getAll(),
-		{ select: ({ data }) => data }
-	)
-	const { asPath } = useRouter()
+	const { data, isLoading } = useQuery({
+		queryKey: ['get categories'],
+		queryFn: () => CategoryService.getAll(),
+		select: ({ data }) => data
+	})
+	const pathname = usePathname()
 
 	const { user } = useAuth()
 	const { logout } = useActions()
@@ -37,7 +37,7 @@ const Sidebar: FC = () => {
 									<Link
 										className={cn(
 											'block text-lg my-3 px-10 hover:text-primary transition-colors duration-200',
-											asPath === `/category/${category.slug}`
+											pathname === `/category/${category.slug}`
 												? 'text-primary'
 												: 'text-white'
 										)}

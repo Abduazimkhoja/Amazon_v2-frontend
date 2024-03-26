@@ -4,7 +4,7 @@ import Button from '@/ui/button/Button'
 import SquareButton from '@/ui/button/SquareButton'
 import { convertPrice } from '@/utils/convertPrice'
 import cn from 'clsx'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { FC } from 'react'
 import { RiShoppingCartLine } from 'react-icons/ri'
 import CartItem from './cart-item/CartItem'
@@ -16,13 +16,13 @@ import { useActions } from '@/hooks/useActions'
 const Cart: FC = () => {
 	const { isShow, setIsShow, ref } = useOutside(false)
 	const { items, total } = useCart()
-  const {reset} = useActions()
+	const { reset } = useActions()
 
 	const { push } = useRouter()
 
-	const { mutate } = useMutation(
-		['create order and payment'],
-		() =>
+	const { mutate } = useMutation({
+		mutationKey: ['create order and payment'],
+		mutationFn: () =>
 			OrderService.place({
 				items: items.map(item => ({
 					price: item.price,
@@ -30,12 +30,12 @@ const Cart: FC = () => {
 					productId: item.product.id
 				}))
 			}),
-		{
-			onSuccess({ data }) {
-				push(data.confirmation.confirmation_url).then(() => reset())
-			}
+
+		onSuccess({ data }) {
+			push(data.confirmation.confirmation_url)
+      reset()
 		}
-	)
+	})
 
 	return (
 		<div className='relative' ref={ref}>

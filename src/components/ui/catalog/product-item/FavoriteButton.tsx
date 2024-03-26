@@ -8,22 +8,25 @@ const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
 	const { profile } = useProfile()
 	const queryClient = useQueryClient()
 
-	const { mutate } = useMutation(
-		['toggle favorite'],
-		() => UserService.toggleFavorite(productId),
-		{
-			onSuccess() {
-				queryClient.invalidateQueries(['get profile'])
-			}
+	const { mutate } = useMutation({
+		mutationKey: ['toggle favorite'],
+		mutationFn: () => UserService.toggleFavorite(productId),
+		onSuccess() {
+			queryClient.invalidateQueries({ queryKey: ['get profile'] })
 		}
-	)
+	})
 
 	if (!profile) return null
 
 	const isExists = profile.favorites.some(favorite => favorite.id === productId)
 
 	return (
-		<button onClick={() => {mutate()}} className='text-primary'>
+		<button
+			onClick={() => {
+				mutate()
+			}}
+			className='text-primary'
+		>
 			{isExists ? <AiFillHeart /> : <AiOutlineHeart />}
 		</button>
 	)
