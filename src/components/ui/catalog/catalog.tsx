@@ -1,3 +1,4 @@
+'use client'
 import { IProduct } from '@/types/product.interface'
 import { FC } from 'react'
 import Heading from '../Heading'
