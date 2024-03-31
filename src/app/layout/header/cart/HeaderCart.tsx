@@ -1,3 +1,4 @@
+'use client'
 import { useCart } from '@/hooks/useCart'
 import { useOutside } from '@/hooks/useOutside'
 import Button from '@/ui/button/Button'
@@ -32,8 +33,8 @@ const Cart: FC = () => {
 			}),
 
 		onSuccess({ data }) {
+			reset()
 			push(data.confirmation.confirmation_url)
-      reset()
 		}
 	})
 

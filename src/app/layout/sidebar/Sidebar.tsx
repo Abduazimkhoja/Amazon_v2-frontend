@@ -1,3 +1,4 @@
+'use client'
 import { useAuth } from '@/hooks/useAction'
 import { useActions } from '@/hooks/useActions'
 import { CategoryService } from '@/services/category.service'
