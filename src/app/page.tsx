@@ -1,11 +1,12 @@
 import Home from '@/app/Home'
 import { ProductService } from '@/services/product/product.service'
-import { Metadata } from 'next'
+// import { Metadata } from 'next'
 import { FC } from 'react'
 
-export const metadata: Metadata = {
-	description: ''
-}
+// export const metadata: Metadata = {
+// 	description:
+// 		'Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, pariatur?'
+// }
 
 export const revalidate = 60
 
@@ -19,6 +20,7 @@ async function getProducts() {
 
 	return data
 }
+
 // PAGE
 export const HomePage: FC = async () => {
 	const { products, length } = await getProducts()
