@@ -1,3 +1,4 @@
+'use client'
 import { ProductService } from '@/services/product/product.service'
 import { EnumProductSort } from '@/services/product/product.types'
 import { TypePaginationProducts } from '@/types/product.interface'
@@ -27,7 +28,8 @@ const CatalogPagination: FC<ICatalogPagination> = ({ data, title }) => {
 			ProductService.getAll({
 				page,
 				perPage: 8,
-				sort: sortType
+				sort: sortType,
+				ratings: ''
 			}),
 		...{ initialData: data, keepPreviousData: true }
 	})
