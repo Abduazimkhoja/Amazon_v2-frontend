@@ -13,23 +13,26 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 	return (
 		<div className='animate-scaleIn'>
 			<div className='bg-white rounded-xl relative overflow-hidden'>
-				<div className='flex gap-3 absolute top-2 right-3 z-10 bg- p-2 rounded-full bg-white shadow'>
+				<div className='flex gap-3 absolute top-2 right-3 z-1 bg- p-2 rounded-full bg-white shadow'>
 					<FavoriteButton productId={id} />
 					<AddToCartButton product={product} />
 				</div>
 
-				<Link href={`/product/${slug}`}>
+				<Link href={`/product/${slug}-${id}`}>
 					<Image
 						width={250}
 						height={250}
 						src={images[0]}
 						alt={name}
 						className='w-full'
+						priority
 					/>
 				</Link>
 			</div>
-			<Link href={`/product/${slug}`}>
-				<h3 title={name} className='mt-2 font-semibold line-clamp-1'>{name}</h3>
+			<Link href={`/product/${slug}-${id}`}>
+				<h3 title={name} className='mt-2 font-semibold line-clamp-1'>
+					{name}
+				</h3>
 			</Link>
 			<Link
 				href={`/category/${category.slug}`}
