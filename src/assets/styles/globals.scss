@@ -5,31 +5,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap");
 
 body {
-   @apply bg-bg-color text-base text-black;
-   font-family: "Golos Text", sans-serif;
+  @apply bg-bg-color text-base text-black;
+  font-family: "Golos Text", sans-serif;
 }
 
 .disabled {
-   pointer-events: none;
-   cursor: default;
-   text-decoration: none;
-   opacity: 0.2 !important;
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  opacity: 0.2 !important;
 }
 
-.menu {
-   transform-origin: top right;
-   transition: transform .4s ease, opacity .4s ease, visibility .4s ease;
+.btn {
+  @apply rounded-xl px-10 py-2 font-medium shadow transition duration-300 ease-in-out;
+
+  &:not(&:disabled) {
+    @apply hover:shadow-lg;
+  }
+
+  &.btn-white {
+    @apply bg-white text-primary;
+  }
+
+  &.btn-orange {
+    @apply bg-primary text-white;
+  }
+
+  &.btn-large {
+    @apply px-12 py-4 text-xl;
+  }
 }
 
-.open-menu {
-   visibility: visible;
-   opacity: 1;
-   transform: scale(1);
+.footer {
+  & > div:first-child {
+    @apply text-sm text-white;
+  }
 
-}
-
-.close-menu {
-   visibility: hidden;
-   opacity: 0;
-   transform: scale(0.3);
+  & > div:last-child {
+    @apply text-xl font-semibold;
+  }
 }
