@@ -4,23 +4,30 @@ const nextConfig = {
 	reactStrictMode: true,
 	env: {
 		SERVER_URL: process.env.SERVER_URL,
-		APP_URL: process.env.APP_URL,
+		APP_URL: process.env.APP_URL
 	},
 	images: {
-		domains: [
-			'ae01.alicdn.com',
-			'picsum.photos',
-			'loremflickr.com',
-			'avatars.githubusercontent.com',
-			'cloudflare-ipfs.com',
+		remotePatterns: [
+			{ protocol: 'http', hostname: 'localhost', pathname: '**' },
+			{ protocol: 'https', hostname: 'ae01.alicdn.com', pathname: '**' },
+			{ protocol: 'https', hostname: 'picsum.photos', pathname: '**' },
+			{ protocol: 'https', hostname: 'loremflickr.com', pathname: '**' },
+			{
+				protocol: 'https',
+				hostname: 'avatars.githubusercontent.com',
+				pathname: '**'
+			},
+			{ protocol: 'https', hostname: 'cloudflare-ipfs.com', pathname: '**' }
 		]
 	},
-  async rewrites() {
-    return [{
-      source: `/uploads/:path*`,
-      destination: 'http://localhost:4200/uploads/:path*'
-    }]
-  }
+	async rewrites() {
+		return [
+			{
+				source: `/uploads/:path*`,
+				destination: 'http://localhost:4200/uploads/:path*'
+			}
+		]
+	}
 }
 
 module.exports = nextConfig
