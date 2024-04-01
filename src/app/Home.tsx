@@ -1,11 +1,11 @@
 import { TypePaginationProducts } from '@/types/product.interface'
-import CatalogPagination from '@/ui/catalog/CatalogPagination'
+import Catalog from '@/ui/catalog/Catalog'
 import { FC } from 'react'
 
-const Home: FC<TypePaginationProducts> = ({ products, length }) => {
+const Home: FC<TypePaginationProducts> = ({ products }) => {
 	return (
 		<>
-			<CatalogPagination title='Fresh products' data={{ products, length }} />
+			<Catalog title='Fresh products' products={products} />
 		</>
 	)
 }
