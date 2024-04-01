@@ -26,6 +26,7 @@ const CatalogPagination: FC<ICatalogPagination> = ({ data, title }) => {
 		queryKey: ['products', sortType, page],
 		queryFn: () =>
 			ProductService.getAll({
+				minify: true,
 				page,
 				perPage: 8,
 				sort: sortType,

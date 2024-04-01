@@ -13,14 +13,14 @@ export const revalidate = 60
 // REQUEST
 async function getProducts() {
 	const data = await ProductService.getAll({
+		minify: true,
 		page: 1,
-		perPage: 4,
+		perPage: 8,
 		ratings: ''
 	})
 
 	return data
 }
-
 // PAGE
 export const HomePage: FC = async () => {
 	const { products, length } = await getProducts()
