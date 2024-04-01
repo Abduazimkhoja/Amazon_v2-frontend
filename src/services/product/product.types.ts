@@ -17,6 +17,7 @@ export type TypeProductDataFilters = {
 	minPrice?: string
 	maxPrice?: string
 	categoryId?: string
+	minify?: boolean
 }
 
 export enum EnumProductSort {
