@@ -18,13 +18,13 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 					<AddToCartButton product={product} />
 				</div>
 
-				<Link href={`/product/${slug}-${id}`}>
+				<Link href={`/product/${slug}`}>
 					<Image
 						width={250}
 						height={250}
 						src={images[0]}
 						alt={name}
-						className='w-full'
+						className='block mx-auto'
 						priority
 					/>
 				</Link>
@@ -40,7 +40,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 			>
 				{category.name}
 			</Link>
-			<ProductRating product={product} />
+			<ProductRating product={product} isText />
 			<h4 className='text-2xl font-semibold'>{convertPrice(price)}</h4>
 		</div>
 	)
