@@ -1,18 +1,17 @@
 'use client'
+import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
 import { useOutside } from '@/hooks/useOutside'
+import { OrderService } from '@/services/order.service'
 import Button from '@/ui/button/Button'
 import SquareButton from '@/ui/button/SquareButton'
 import { convertPrice } from '@/utils/convertPrice'
-import cn from 'clsx'
+import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { FC } from 'react'
 import { RiShoppingCartLine } from 'react-icons/ri'
 import CartItem from './cart-item/CartItem'
 import styles from './cart.module.scss'
-import { useMutation } from '@tanstack/react-query'
-import { OrderService } from '@/services/order.service'
-import { useActions } from '@/hooks/useActions'
 
 const Cart: FC = () => {
 	const { isShow, setIsShow, ref } = useOutside(false)
@@ -47,12 +46,7 @@ const Cart: FC = () => {
 				}}
 				number={items.length}
 			/>
-			<div
-				className={cn(
-					'absolute top-[4.2rem] w-80 -left-[17.5rem] bg-secondary rounded-xl px-5 py-3 text-sm menu z-20 text-white',
-					isShow ? 'open-menu' : 'close-menu'
-				)}
-			>
+			<div className={styles.cartWrapper}>
 				<div className='font-normal text-lg mb-5'>My cart</div>
 
 				<div className={styles.cart}>
