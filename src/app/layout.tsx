@@ -1,9 +1,6 @@
-'use client'
 import '@/assets/styles/globals.scss'
-import { getSiteUrl } from '@/config/url.config'
-import { SITE_NAME } from '@/constants/seo.constants'
+import { Golos_Text } from 'next/font/google'
 import Providers from '@/providers/Providers'
-import { Metadata } from 'next'
 import type { PropsWithChildren } from 'react'
 import Header from './layout/header/Header'
 import Sidebar from './layout/sidebar/Sidebar'
@@ -24,16 +21,26 @@ import Sidebar from './layout/sidebar/Sidebar'
 // 	}
 // }
 
+const golos = Golos_Text({
+	weight: ['400', '500', '600', '700'],
+	subsets: ['latin', 'cyrillic-ext'],
+	display: 'swap',
+	style: ['normal'],
+	variable: '--font-golos'
+})
+
 export default function RootLayout({ children }: PropsWithChildren<unknown>) {
 	return (
-		<html lang='en'>
+		<html lang='en' className={golos.variable}>
 			<body>
 				<Providers>
-					<div>
+					<div className='bg-secondary '>
 						<Header />
-						<div className='grid' style={{ gridTemplateColumns: '1fr 4fr' }}>
+						<div className='grid' style={{ gridTemplateColumns: '1fr 6fr' }}>
 							<Sidebar />
-							<main className='p-12'>{children}</main>
+							<main className='p-12 pb-52 bg-bg-color rounded-tl-lg'>
+								{children}
+							</main>
 						</div>
 					</div>
 				</Providers>
