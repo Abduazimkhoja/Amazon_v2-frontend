@@ -1,3 +1,4 @@
+'use client'
 import { UserService } from '@/services/user.service'
 import { IFullUser } from '@/types/user.interface'
 import { useQuery } from '@tanstack/react-query'
