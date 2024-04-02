@@ -24,10 +24,12 @@ export const ProductService = {
 	},
 
 	async getSlug(slug: string) {
-		return instance<IProduct>({
+		const { data } = await instance<IProduct>({
 			url: `${PRODUCTS}/by-slug/${slug}`,
 			method: 'GET'
 		})
+
+		return data
 	},
 
 	async getByCategory(slug: string) {
