@@ -1,3 +1,5 @@
+'use client'
+import { useIsAdminPanel } from '@/hooks/useIsAdminPanel'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -9,6 +11,12 @@ interface ILogo {
 }
 
 const Logo: FC<ILogo> = ({ url, width = 180, height = 60 }) => {
+	const { isAdminPanel } = useIsAdminPanel()
+
+	if (isAdminPanel) {
+		return <h2 className='text-3x1 text-white font-semibold'>Admin Panel</h2>
+	}
+
 	return (
 		<Link href='/'>
 			<Image
