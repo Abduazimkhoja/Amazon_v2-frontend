@@ -8,15 +8,18 @@ import {
 	REHYDRATE,
 	persistStore
 } from 'redux-persist'
+import { carouselSlice } from './carousel/carousel.slice'
 import { cartSlice } from './cart/cart.slice'
+import { filtersSlice } from './filters/filters.slice'
 import { userSlice } from './user/user.slice'
 
 const isClient = typeof window !== 'undefined'
 
 const combinedReducers = combineReducers({
 	cart: cartSlice.reducer,
-	// carousel: carouselSlice.reducer,
-	user: userSlice.reducer
+	carousel: carouselSlice.reducer,
+	user: userSlice.reducer,
+	filters: filtersSlice.reducer
 })
 
 let mainReducer = combinedReducers
