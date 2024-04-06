@@ -22,7 +22,8 @@ export const filtersSlice = createSlice({
 			action: PayloadAction<IFiltersActionsPayload>
 		) => {
 			const { key, value } = action.payload
-			state.queryParams[key] = value
+			if (key === 'minify') state.queryParams.minify = true
+			else state.queryParams[key] = value
 			state.isFilterUpdated = true
 		},
 		resetFilterUpdate: state => {
