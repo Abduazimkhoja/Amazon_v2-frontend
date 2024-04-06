@@ -8,6 +8,8 @@ import { useQuery } from '@tanstack/react-query'
 import cn from 'clsx'
 import { FC, useState } from 'react'
 import styles from './ProductExplorer.module.scss'
+import { Pagination } from './pagination/Pagination'
+import SortDropdown from './sort/SortDropdown'
 import { useFilters } from './useFilters'
 
 interface IProductExplorer {
@@ -34,7 +36,7 @@ export const ProductExplorer: FC<IProductExplorer> = ({ initialProducts }) => {
 		<>
 			<div className='flex item-center justify-between mb-7'>
 				<Heading>{isSearchTerm}</Heading>
-				{/* <SortDropdown /> */}
+				<SortDropdown />
 			</div>
 			<Button
 				option='white'
@@ -52,7 +54,11 @@ export const ProductExplorer: FC<IProductExplorer> = ({ initialProducts }) => {
 
 				<section>
 					<Catalog products={data.products} isLoading={isFetching} />
-					{/* pagination */}
+					<Pagination
+						changePage={page => updateQueryParams('page', `${page}`)}
+						currentPage={queryParams.page}
+						numberPages={data.length / +queryParams.perPage}
+					/>
 				</section>
 			</div>
 		</>
