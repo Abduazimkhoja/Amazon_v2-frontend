@@ -1,8 +1,7 @@
 import { useActions } from '@/hooks/useActions'
 import { useTypedSelector } from '@/hooks/useTypedSelector'
 import { TypeProductDataFilters } from '@/services/product/product.types'
-import { usePathname, useSearchParams } from 'next/navigation'
-import { useRouter } from 'next/router'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
 export const useFilters = () => {
@@ -42,7 +41,7 @@ export const useFilters = () => {
 	}
 
 	return {
-		updateQueryParam,
+		updateQueryParams,
 		queryParams,
 		isFilterUpdated
 	}
