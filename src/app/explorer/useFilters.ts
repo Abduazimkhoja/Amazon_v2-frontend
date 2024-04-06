@@ -24,8 +24,8 @@ export const useFilters = () => {
 	}, [])
 
 	const updateQueryParams = (
-		value: string,
-		key: keyof TypeProductDataFilters
+		key: keyof TypeProductDataFilters,
+		value: string
 	) => {
 		const newParams = new URLSearchParams(searchParams.toString())
 
