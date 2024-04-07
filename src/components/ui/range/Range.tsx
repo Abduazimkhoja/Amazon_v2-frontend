@@ -1,4 +1,6 @@
-import { FC, useState } from 'react'
+import { useDebounce } from '@/hooks/useDebounce'
+import { FC, useEffect, useState } from 'react'
+import styles from './Range.module.scss'
 
 interface IRange {
 	min?: number
@@ -18,11 +20,39 @@ export const Range: FC<IRange> = ({
 	onChangeToValue
 }) => {
 	const [fromValue, setFromValue] = useState(fromInitialValue || '')
-	const [toValue, settoValue] = useState(toInitialValue || '')
+	const [toValue, setToValue] = useState(toInitialValue || '')
 
-  
+	const debouncedFromValue = useDebounce(fromValue, 500)
+	const debouncedToValue = useDebounce(toValue, 500)
 
-	return <div>Range</div>
+	useEffect(() => {
+		onChangeFromValue(debouncedFromValue)
+	}, [debouncedFromValue])
+
+	useEffect(() => {
+		onChangeToValue(debouncedToValue)
+	}, [debouncedToValue])
+
+	return (
+		<div className={styles.range}>
+			<input
+				type='number'
+				min={min}
+				max={max}
+				placeholder='From'
+				value={fromValue}
+				onChange={e => setFromValue(e.target.value)}
+			/>
+			<input
+				type='number'
+				min={min}
+				max={max}
+				placeholder='To'
+				value={toValue}
+				onChange={e => setToValue(e.target.value)}
+			/>
+		</div>
+	)
 }
 
 export default Range
