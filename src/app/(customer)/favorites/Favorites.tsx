@@ -1,6 +1,5 @@
 'use client'
 
-import Layout from '@/app/layout'
 import { useProfile } from '@/hooks/useProfile'
 import Catalog from '@/ui/catalog/Catalog'
 

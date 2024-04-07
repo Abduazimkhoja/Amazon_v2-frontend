@@ -7,7 +7,7 @@ import { FC, useState } from 'react'
 import Heading from '../Heading'
 import Loader from '../Loader'
 import Button from '../button/Button'
-import SortDropdown from './SortDropdown'
+import SortDropdown from '../../../app/explorer/sort/SortDropdown'
 import ProductItem from './product-item/ProductItem'
 
 interface ICatalogPagination {
