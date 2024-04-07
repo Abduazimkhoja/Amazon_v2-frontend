@@ -17,7 +17,12 @@ export const revalidate = 60
 
 // REQUEST
 async function getProducts(searchParams: TypeProductDataFilters) {
-	return await ProductService.getAll(searchParams)
+	return await ProductService.getAll({
+		minify: true,
+		page: 1,
+		perPage: 20,
+		ratings: ''
+	})
 }
 
 export default async function ExplorerPage({
