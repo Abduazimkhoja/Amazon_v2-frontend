@@ -2,7 +2,7 @@ import { useDebounce } from '@/hooks/useDebounce'
 import { FC, useEffect, useState } from 'react'
 import styles from './Range.module.scss'
 
-interface IRange {
+export interface IRange {
 	min?: number
 	max: number
 	fromInitialValue?: string
