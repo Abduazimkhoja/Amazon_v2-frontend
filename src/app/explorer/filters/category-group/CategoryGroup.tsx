@@ -1,6 +1,6 @@
 import { useCategories } from '@/hooks/queries/useCategories'
 import Loader from '@/ui/Loader'
-import Checkbox from '@/ui/checkbox/Checkbox'
+import Checkbox, { ICheckbox } from '@/ui/checkbox/Checkbox'
 import { FC } from 'react'
 import { useFilters } from '../../useFilters'
 import FilterWrapper from '../FilterWrapper'
@@ -18,7 +18,7 @@ const CategoryGroup: FC = () => {
 				updateQueryParams('categoryId', isChecked ? '' : categoryIdStr),
 			key: categoryId,
 			className: 'mb-2 text-sm'
-		}
+		} as ICheckbox
 	}
 
 	if (isLoading) {
@@ -29,20 +29,18 @@ const CategoryGroup: FC = () => {
 		)
 	}
 
-	return (
-		<FilterWrapper title='Category'>
-			{data?.length ? (
-				data?.map(category => {
-					const isChecked = queryParams.categoryId === category.id.toString()
+	const getCategoryCheckboxList = () => {
+		if (!data?.length) return <p>Category not found</p>
 
-					return (
-						<Checkbox {...checkboxProps(category.id)}>{category.name}</Checkbox>
-					)
-				})
-			) : (
-				<p>Category not found</p>
-			)}
-		</FilterWrapper>
+		const checkboxList = data?.map(category => (
+			<Checkbox {...checkboxProps(category.id)}>{category.name}</Checkbox>
+		))
+
+		return checkboxList
+	}
+
+	return (
+		<FilterWrapper title='Category'>{getCategoryCheckboxList()}</FilterWrapper>
 	)
 }
 
