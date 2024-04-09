@@ -11,6 +11,7 @@ import styles from './ProductExplorer.module.scss'
 import { Pagination } from './pagination/Pagination'
 import SortDropdown from './sort/SortDropdown'
 import { useFilters } from './useFilters'
+import Filters from './filters/Filters'
 
 interface IProductExplorer {
 	initialProducts: TypePaginationProducts
@@ -50,7 +51,9 @@ export const ProductExplorer: FC<IProductExplorer> = ({ initialProducts }) => {
 					[styles.filterOpened]: isFilterOpen
 				})}
 			>
-				<aside>{/* filters */}</aside>
+				<aside>
+					<Filters />
+				</aside>
 
 				<section>
 					<Catalog products={data.products} isLoading={isFetching} />
