@@ -21,15 +21,23 @@ const CategoryGroup: FC = () => {
 		}
 	}
 
+	if (isLoading) {
+		return (
+			<FilterWrapper title='Category'>
+				<Loader />
+			</FilterWrapper>
+		)
+	}
+
 	return (
 		<FilterWrapper title='Category'>
-			{isLoading ? (
-				<Loader />
-			) : data?.length ? (
+			{data?.length ? (
 				data?.map(category => {
 					const isChecked = queryParams.categoryId === category.id.toString()
 
-					return <Checkbox>{category.name}</Checkbox>
+					return (
+						<Checkbox {...checkboxProps(category.id)}>{category.name}</Checkbox>
+					)
 				})
 			) : (
 				<p>Category not found</p>
