@@ -41,7 +41,7 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	// если пользователь не адним то такой страницы не существует
 	if (!user?.isAdmin && isAdminRoute) return <NotFound />
 
-  // скрытие страницы регистрации для авторизированых пользователей
+	// скрытие страницы регистрации для авторизированых пользователей
 	if (user && pathname === '/auth') {
 		router.replace('/')
 		return null
