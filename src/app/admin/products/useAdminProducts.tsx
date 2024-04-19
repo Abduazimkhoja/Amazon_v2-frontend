@@ -1,3 +1,4 @@
+'use client'
 import { getAdminUrl } from '@/config/url.config'
 import { ProductService } from '@/services/product/product.service'
 import { IListItem } from '@/ui/admin/admin-list/admin-list.interface'
@@ -37,3 +38,4 @@ export const useAdminProducts = () => {
 		isFetching
 	}
 }
+// 3/27/31

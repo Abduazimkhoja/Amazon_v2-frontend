@@ -1,4 +1,4 @@
-import Layout from '@/app/layout'
+'use client'
 import { FC } from 'react'
 import { useAdminProducts } from './useAdminProducts'
 import Heading from '@/ui/Heading'
