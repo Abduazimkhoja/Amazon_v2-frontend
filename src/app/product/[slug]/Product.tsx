@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import { FC } from 'react'
 import ProductGallery from './ProductGallery'
 import ProductReviewsCount from './ProductReviewsCount'
+import SimilarProducts from './SimilarProducts'
 import ProductInformation from './product-information/ProductInformation'
 
 interface IProductPage {
@@ -41,9 +42,9 @@ const Product: FC<IProductPage> = ({
 				</div>
 				<ProductInformation product={product} />
 			</div>
+			<SimilarProducts similarProducts={similarProducts} />
 		</>
 	)
 }
 
 export default Product
-
