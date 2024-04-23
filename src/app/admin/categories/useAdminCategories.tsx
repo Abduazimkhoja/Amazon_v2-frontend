@@ -1,32 +1,27 @@
 'use client'
 import { getAdminUrl } from '@/config/url.config'
-import { ProductService } from '@/services/product/product.service'
+import { CategoryService } from '@/services/category.service'
 import { IListItem } from '@/ui/admin/admin-list/admin-list.interface'
-import { formatDate } from '@/utils/fromat-date'
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const useAdminCategories = () => {
 	const { data, isFetching, refetch } = useQuery({
-		queryKey: ['get admin product'],
-		queryFn: () => ProductService.getAll(),
-		select: data =>
-			data.products.map((product): IListItem => {
+		queryKey: ['get admin category'],
+		queryFn: () => CategoryService.getAll(),
+		select: ({ data }) =>
+			data.map((category): IListItem => {
 				return {
-					id: product.id,
-					viewUrl: `/product/${product.slug}`,
-					editUrl: getAdminUrl(`/products/edit/${product.id}`),
-					items: [
-						product.name,
-						product.category.name,
-						formatDate(product.createdAt)
-					]
+					id: category.id,
+					viewUrl: `/category/${category.slug}`,
+					editUrl: getAdminUrl(`/categories/edit/${category.id}`),
+					items: [category.name, category.slug]
 				}
 			})
 	})
 
 	const { mutate } = useMutation({
-		mutationKey: ['delete product'],
-		mutationFn: (id: number) => ProductService.delete(id),
+		mutationKey: ['delete category'],
+		mutationFn: (id: number) => CategoryService.delete(id),
 		onSuccess() {
 			refetch()
 		}
