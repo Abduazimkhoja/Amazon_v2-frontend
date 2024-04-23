@@ -16,19 +16,33 @@ export const ReviewService = {
 		})
 	},
 
-	async getAverageByProduct(productId: string|number) {
+	async getAverageByProduct(productId: string | number) {
 		return instance<number>({
 			url: `${REVIEWS}/average-by-product/${productId}`,
 			method: 'GET'
 		})
 	},
 
-	async leave(productId: string | number, data: TypeData) {
+	async create(productId: string | number, data: TypeData) {
 		return instance<IReview>({
-			url: `${REVIEWS}/leave/${productId}`,
+			url: `${REVIEWS}/${productId}`,
 			method: 'POST',
 			data
 		})
 	},
 
+	async update(reviewId: string | number, data: TypeData) {
+		return instance<IReview>({
+			url: `${REVIEWS}/${reviewId}`,
+			method: 'PUT',
+			data
+		})
+	},
+
+	async delete(reviewId: string | number) {
+		return instance({
+			url: `${REVIEWS}/${reviewId}`,
+			method: 'DELETE'
+		})
+	}
 }
