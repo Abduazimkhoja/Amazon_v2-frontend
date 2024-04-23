@@ -1,32 +1,33 @@
 'use client'
 import { getAdminUrl } from '@/config/url.config'
-import { ProductService } from '@/services/product/product.service'
+import { ReviewService } from '@/services/review.service'
 import { IListItem } from '@/ui/admin/admin-list/admin-list.interface'
-import { formatDate } from '@/utils/fromat-date'
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const useAdminReviews = () => {
 	const { data, isFetching, refetch } = useQuery({
-		queryKey: ['get admin product'],
-		queryFn: () => ProductService.getAll(),
-		select: data =>
-			data.products.map((product): IListItem => {
+		queryKey: ['get admin review'],
+		queryFn: () => ReviewService.getAll(),
+		select: ({ data }) =>
+			data.map((review): IListItem => {
 				return {
-					id: product.id,
-					viewUrl: `/product/${product.slug}`,
-					editUrl: getAdminUrl(`/products/edit/${product.id}`),
+					id: review.id,
+					viewUrl: `/reviews/${review.id}`,
+					editUrl: getAdminUrl(`/reviews/edit/${review.id}`),
 					items: [
-						product.name,
-						product.category.name,
-						formatDate(product.createdAt)
+						`${review.id}`,
+						Array.from({ length: review.rating })
+							.map(() => '⭐')
+							.join(' ') || '0',
+						review.user.name
 					]
 				}
 			})
 	})
 
 	const { mutate } = useMutation({
-		mutationKey: ['delete product'],
-		mutationFn: (id: number) => ProductService.delete(id),
+		mutationKey: ['delete review'],
+		mutationFn: (reviewId: number) => ReviewService.delete(reviewId),
 		onSuccess() {
 			refetch()
 		}
