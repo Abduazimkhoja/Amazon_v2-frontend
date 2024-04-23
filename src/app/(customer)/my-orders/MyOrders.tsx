@@ -10,15 +10,8 @@ interface IMyOrders {}
 export default function MyOrders({}: IMyOrders) {
 	const { data: orders } = useQuery({
 		queryKey: ['my orders'],
-		queryFn: async () => {
-			try {
-				const response = await OrderService.getAll()
-				return response.data
-			} catch (error) {
-				console.log(error)
-				throw new Error('Failed to fetch profile data')
-			}
-		}
+		queryFn: () => OrderService.getByUserId(),
+		select: ({ data }) => data
 	})
 
 	return (
@@ -41,7 +34,7 @@ export default function MyOrders({}: IMyOrders) {
 						</div>
 					))
 				) : (
-					<div>Order not found!</div>
+					<div>Orders not found!</div>
 				)}
 			</section>
 		</>
