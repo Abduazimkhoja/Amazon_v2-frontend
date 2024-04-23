@@ -23,7 +23,7 @@ export const ProductService = {
 		})
 	},
 
-	async getSlug(slug: string) {
+	async getBySlug(slug: string) {
 		const { data } = await instance<IProduct>({
 			url: `${PRODUCTS}/by-slug/${slug}`,
 			method: 'GET'
