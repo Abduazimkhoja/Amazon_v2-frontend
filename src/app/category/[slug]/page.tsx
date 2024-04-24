@@ -28,7 +28,7 @@ export async function generateMetadata({
 		title: category.name,
 		description: `Random description about ${category.name}`,
 		openGraph: {
-			images: products[0].images,
+			images: products[0]?.images || [],
 			description: `Random description about ${category.name}`
 		}
 	}
