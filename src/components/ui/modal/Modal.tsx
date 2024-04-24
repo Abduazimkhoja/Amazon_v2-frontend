@@ -26,6 +26,7 @@ const Modal: FC<PropsWithChildren<IModal>> = ({
 				<button onClick={closeModal}>
 					<RiCloseFill />
 				</button>
+				{children}
 			</div>
 		</div>,
 		modalRef.current
