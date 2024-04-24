@@ -8,6 +8,7 @@ import ProductGallery from './ProductGallery'
 import ProductReviewsCount from './ProductReviewsCount'
 import SimilarProducts from './SimilarProducts'
 import ProductInformation from './product-information/ProductInformation'
+import ProductReviews from './product-reviews.tsx/ProductReviews'
 
 interface IProductPage {
 	initialProduct: IProduct
@@ -43,6 +44,7 @@ const Product: FC<IProductPage> = ({
 				<ProductInformation product={product} />
 			</div>
 			<SimilarProducts similarProducts={similarProducts} />
+			<ProductReviews reviews={product.reviews} productId={product.id} />
 		</>
 	)
 }
