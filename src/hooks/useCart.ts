@@ -1,3 +1,4 @@
+'use client'
 import { useTypedSelector } from './useTypedSelector'
 
 export const useCart = () => {
