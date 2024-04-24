@@ -21,7 +21,11 @@ const ProductReviews: FC<IProductReviews> = ({ reviews, productId }) => {
 		<section>
 			<div className='mb-9'>
 				<Heading className='mb-3'>Reviews: </Heading>
-				{user && <button className='text-aqua'>Leave a review</button>}
+				{user && (
+					<button onClick={() => setIsModalOpen(true)} className='text-aqua'>
+						Leave a review
+					</button>
+				)}
 			</div>
 
 			{user && (
