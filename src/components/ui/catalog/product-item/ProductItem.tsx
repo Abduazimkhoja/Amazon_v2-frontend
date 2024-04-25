@@ -9,8 +9,6 @@ import ProductRating from './ProductRating'
 
 const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 	const { id, slug, images, name, category, price } = product
-  console.log(`${process.env.SERVER_URL}${images[0]}`);
-  
 
 	return (
 		<div className='animate-scaleIn'>
