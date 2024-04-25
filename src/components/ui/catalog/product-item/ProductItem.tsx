@@ -9,6 +9,8 @@ import ProductRating from './ProductRating'
 
 const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 	const { id, slug, images, name, category, price } = product
+  console.log(`${process.env.SERVER_URL}${images[0]}`);
+  
 
 	return (
 		<div className='animate-scaleIn'>
@@ -22,7 +24,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 					<Image
 						width={250}
 						height={250}
-						src={images[0]}
+						src={`${process.env.SERVER_URL}${images[0]}`}
 						alt={name}
 						className='block mx-auto'
 						priority
