@@ -1,6 +1,6 @@
 import { IProduct } from '@/types/product.interface'
 import ProductRating from '@/ui/catalog/product-item/ProductRating'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { FiChevronRight } from 'react-icons/fi'
 import { Link } from 'react-scroll'
 

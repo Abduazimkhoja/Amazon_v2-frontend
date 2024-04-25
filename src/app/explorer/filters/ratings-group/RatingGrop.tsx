@@ -1,5 +1,5 @@
 import Checkbox, { ICheckbox } from '@/ui/checkbox/Checkbox'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { Rating } from 'react-simple-star-rating'
 import { useFilters } from '../../useFilters'
 import FilterWrapper from '../FilterWrapper'

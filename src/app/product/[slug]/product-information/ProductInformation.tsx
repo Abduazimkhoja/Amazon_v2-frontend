@@ -2,7 +2,7 @@ import { IProduct } from '@/types/product.interface'
 import FavoriteButton from '@/ui/catalog/product-item/FavoriteButton'
 import { convertPrice } from '@/utils/convertPrice'
 import Link from 'next/link'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { FaLock } from 'react-icons/fa'
 import AddToCartInline from './AddToCartInline'
 

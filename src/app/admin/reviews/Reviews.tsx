@@ -1,7 +1,7 @@
 'use client'
 import Heading from '@/ui/Heading'
 import AdminList from '@/ui/admin/admin-list/AdminList'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { useAdminReviews } from './useAdminReviews'
 
 const Reviews: FC = () => {

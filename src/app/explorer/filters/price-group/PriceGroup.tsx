@@ -1,6 +1,6 @@
-import { FC } from 'react'
-import { useFilters } from '../../useFilters'
 import Range, { IRange } from '@/ui/range/Range'
+import type { FC } from 'react'
+import { useFilters } from '../../useFilters'
 import FilterWrapper from '../FilterWrapper'
 
 const PriceGroup: FC = () => {

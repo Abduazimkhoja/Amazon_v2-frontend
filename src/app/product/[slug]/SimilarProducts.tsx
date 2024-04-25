@@ -1,7 +1,7 @@
 import { IProduct } from '@/types/product.interface'
 import Heading from '@/ui/Heading'
 import ProductItem from '@/ui/catalog/product-item/ProductItem'
-import { FC } from 'react'
+import type { FC } from 'react'
 
 interface ISimilarProducts {
 	similarProducts: IProduct[]

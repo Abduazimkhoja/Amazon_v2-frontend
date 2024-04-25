@@ -4,7 +4,7 @@ import { useIsAdminPanel } from '@/hooks/useIsAdminPanel'
 import Loader from '@/ui/Loader'
 import cn from 'clsx'
 import Link from 'next/link'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { ADMIN_MENU } from './admin-menu.data'
 import { convertToMenuItems } from './convert-to-menu-items'
 

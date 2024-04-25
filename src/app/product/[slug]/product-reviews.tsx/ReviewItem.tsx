@@ -1,6 +1,6 @@
 import { IReview } from '@/types/review.interface'
 import Image from 'next/image'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { Rating } from 'react-simple-star-rating'
 
 const ReviewItem: FC<{ review: IReview }> = ({ review }) => {

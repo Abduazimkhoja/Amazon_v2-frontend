@@ -1,7 +1,7 @@
 import { IProduct } from '@/types/product.interface'
 import { convertPrice } from '@/utils/convertPrice'
 import Image from 'next/image'
-import { FC } from 'react'
+import type { FC } from 'react'
 import styles from './Checkout.module.scss'
 
 const CheckoutItem: FC<{ product: IProduct }> = ({ product }) => {

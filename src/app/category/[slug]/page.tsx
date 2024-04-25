@@ -3,7 +3,7 @@ import { ProductService } from '@/services/product/product.service'
 import { TypeParamSLug, iPageSlugParam } from '@/types/page-params'
 import Catalog from '@/ui/catalog/Catalog'
 
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 
 export const revalidate = 60
 

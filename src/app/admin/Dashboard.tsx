@@ -4,7 +4,7 @@ import Heading from '@/ui/Heading'
 import Loader from '@/ui/Loader'
 import { convertPrice } from '@/utils/convertPrice'
 import { useQuery } from '@tanstack/react-query'
-import { FC } from 'react'
+import type { FC } from 'react'
 import styles from './Dashboard.module.scss'
 
 const Dashboard: FC = () => {

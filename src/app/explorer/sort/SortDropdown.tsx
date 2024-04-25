@@ -1,6 +1,6 @@
 import { EnumProductSort } from '@/services/product/product.types'
 import Select from '@/ui/select/Select'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { useFilters } from '../useFilters'
 import { SORT_SELECT_DATA } from './sort-select.data'
 

@@ -1,7 +1,7 @@
 import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
 import { IProduct } from '@/types/product.interface'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { RiShoppingCartFill, RiShoppingCartLine } from 'react-icons/ri'
 
 const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {

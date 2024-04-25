@@ -2,7 +2,7 @@ import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
 import { IProduct } from '@/types/product.interface'
 import Button from '@/ui/button/Button'
-import { FC } from 'react'
+import type { FC } from 'react'
 
 const AddToCartInline: FC<{ product: IProduct }> = ({ product }) => {
 	const { addToCart, removeFromCart } = useActions()

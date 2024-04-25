@@ -1,7 +1,7 @@
-import { FC } from 'react'
+import type { FC } from 'react'
+import styles from './AdminList.module.scss'
 import AdminActions from './admin-actions/AdminActions'
 import { IAdminListItem } from './admin-list.interface'
-import styles from './AdminList.module.scss'
 
 const AdminListItem: FC<IAdminListItem> = ({ removeHandler, listItem }) => {
 	return (

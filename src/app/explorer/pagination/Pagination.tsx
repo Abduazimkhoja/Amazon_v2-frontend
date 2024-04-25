@@ -1,5 +1,5 @@
 import Button from '@/ui/button/Button'
-import { FC } from 'react'
+import type { FC } from 'react'
 
 interface IPagination {
 	numberPages: number
@@ -18,7 +18,7 @@ export const Pagination: FC<IPagination> = ({
 	return (
 		<div className='text-center mt-16'>
 			{emptyArray.map((_, index) => {
-				const pageNumber = `${(index + 1)}`
+				const pageNumber = `${index + 1}`
 				return (
 					<Button
 						key={pageNumber}

@@ -1,6 +1,6 @@
 'use client'
 import Loader from '@/ui/Loader'
-import { FC } from 'react'
+import type { FC } from 'react'
 import styles from './AdminList.module.scss'
 import AdminListItem from './AdminListItem'
 import { IListItem } from './admin-list.interface'

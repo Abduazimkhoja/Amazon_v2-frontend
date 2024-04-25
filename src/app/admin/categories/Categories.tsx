@@ -1,8 +1,8 @@
 'use client'
-import { FC } from 'react'
-import { useAdminCategories } from './useAdminCategories'
 import Heading from '@/ui/Heading'
 import AdminList from '@/ui/admin/admin-list/AdminList'
+import type { FC } from 'react'
+import { useAdminCategories } from './useAdminCategories'
 
 const Categories: FC = () => {
 	const { data, isFetching, mutate } = useAdminCategories()

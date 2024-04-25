@@ -1,7 +1,6 @@
 import Heading from '@/ui/Heading'
 import Link from 'next/link'
-import { FC } from 'react'
-import Layout from '@/app/layout'
+import type { FC } from 'react'
 
 export const NotFound: FC = () => {
 	return (

@@ -1,12 +1,12 @@
 import { ReviewService } from '@/services/review.service'
 import Heading from '@/ui/Heading'
 import Loader from '@/ui/Loader'
+import Button from '@/ui/button/Button'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { Rating } from 'react-simple-star-rating'
 import { IReviewFields } from './review-fields.interface'
-import Button from '@/ui/button/Button'
 
 const LeaveReviewForm: FC<{ productId: number }> = ({ productId }) => {
 	const {

@@ -7,7 +7,7 @@ import SquareButton from '@/ui/button/SquareButton'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { FiLogOut } from 'react-icons/fi'
 import { MdOutlineLogin } from 'react-icons/md'
 

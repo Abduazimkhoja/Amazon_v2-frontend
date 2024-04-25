@@ -1,7 +1,7 @@
 'use client'
 import { useTypedSelector } from '@/hooks/useTypedSelector'
 import cn from 'clsx'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { TransitionGroup } from 'react-transition-group'
 import { CSSTransitionClassNames } from 'react-transition-group/CSSTransition'
 import { CSSTransition } from '../CSSTransitionGroup'

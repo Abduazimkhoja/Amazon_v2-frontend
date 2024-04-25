@@ -1,6 +1,6 @@
 import Logo from '@/ui/logo/Logo'
 import Link from 'next/link'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { AiOutlineHeart } from 'react-icons/ai'
 import AdminLink from './AdminLink'
 import HeaderProfile from './HeaderProfile'

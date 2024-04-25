@@ -1,8 +1,8 @@
 'use client'
-import { FC } from 'react'
-import { useAdminProducts } from './useAdminProducts'
 import Heading from '@/ui/Heading'
 import AdminList from '@/ui/admin/admin-list/AdminList'
+import type { FC } from 'react'
+import { useAdminProducts } from './useAdminProducts'
 
 const Products: FC = () => {
 	const { data, isFetching, mutate } = useAdminProducts()

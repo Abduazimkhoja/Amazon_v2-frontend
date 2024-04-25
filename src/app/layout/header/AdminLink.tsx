@@ -2,7 +2,7 @@
 import { useAuth } from '@/hooks/useAction'
 import { useIsAdminPanel } from '@/hooks/useIsAdminPanel'
 import Link from 'next/link'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { MdOutlineAdminPanelSettings } from 'react-icons/md'
 
 const AdminLink: FC = () => {

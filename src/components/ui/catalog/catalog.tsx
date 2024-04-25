@@ -1,6 +1,6 @@
 'use client'
 import { IProduct } from '@/types/product.interface'
-import { FC } from 'react'
+import type { FC } from 'react'
 import Heading from '../Heading'
 import Loader from '../Loader'
 import ProductItem from './product-item/ProductItem'
