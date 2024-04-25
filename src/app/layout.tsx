@@ -34,7 +34,7 @@ const golos = Golos_Text({
 
 export default function RootLayout({ children }: PropsWithChildren<unknown>) {
 	return (
-		<html lang='en' className={golos.variable}>
+		<html lang='en' className={golos.className}>
 			<body>
 				<Providers>
 					<div className='bg-secondary '>
