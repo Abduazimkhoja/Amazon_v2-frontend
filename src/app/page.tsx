@@ -1,7 +1,7 @@
 import Home from '@/app/Home'
 import { ProductService } from '@/services/product/product.service'
-import { Metadata } from 'next'
-import { FC } from 'react'
+import type { Metadata } from 'next'
+import type { FC } from 'react'
 
 export const metadata: Metadata = {
   title: "Home",
@@ -23,7 +23,7 @@ async function getProducts() {
 	return data
 }
 // PAGE
-export const HomePage: FC = async () => {
+const HomePage: FC = async () => {
 	const { products, length } = await getProducts()
 
 	return <Home products={products} length={length} />
