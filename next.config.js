@@ -4,7 +4,9 @@ const nextConfig = {
 	reactStrictMode: true,
 	env: {
 		SERVER_URL: process.env.SERVER_URL,
-		APP_URL: process.env.APP_URL
+		SERVER_URL_API: process.env.SERVER_URL_API,
+		SERVER_URL_HOST: process.env.SERVER_URL_HOST,
+		APP_URL: process.env.APP_URL,
 	},
 	images: {
 		remotePatterns: [
@@ -14,18 +16,15 @@ const nextConfig = {
 			{ protocol: 'https', hostname: 'loremflickr.com', pathname: '**' },
 			{
 				protocol: 'https',
+				hostname: process.env.SERVER_URL_HOST,
+				pathname: '**'
+			},
+			{
+				protocol: 'https',
 				hostname: 'avatars.githubusercontent.com',
 				pathname: '**'
 			},
 			{ protocol: 'https', hostname: 'cloudflare-ipfs.com', pathname: '**' }
-		]
-	},
-	async rewrites() {
-		return [
-			{
-				source: `/uploads/:path*`,
-				destination: `${process.env.SERVER_URL}/uploads/:path*`
-			}
 		]
 	}
 }
