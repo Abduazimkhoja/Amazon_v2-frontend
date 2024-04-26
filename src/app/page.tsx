@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import type { FC } from 'react'
 
 export const metadata: Metadata = {
-  title: "Home",
+	title: 'Home',
 	description:
 		'Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, pariatur?'
 }
