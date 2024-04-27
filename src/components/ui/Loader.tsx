@@ -2,46 +2,62 @@ import type { FC } from 'react'
 
 const Loader: FC = () => {
 	return (
-		<svg
-			version='1.1'
-			id='L5'
-			xmlns='http://www.w3.org/2000/svg'
-			x='0px'
-			y='0px'
-			viewBox='0 0 100 100'
-			enableBackground='new 0 0 0 0'
-		>
-			<circle fill='#000' stroke='none' cx='6' cy='50' r='6'>
-				<animateTransform
-					attributeName='transform'
-					dur='1s'
-					type='translate'
-					values='0 15 ; 0 -15; 0 15'
-					repeatCount='indefinite'
-					begin='0.1'
-				/>
-			</circle>
-			<circle fill='#000' stroke='none' cx='30' cy='50' r='6'>
-				<animateTransform
-					attributeName='transform'
-					dur='1s'
-					type='translate'
-					values='0 10 ; 0 -10; 0 10'
-					repeatCount='indefinite'
-					begin='0.2'
-				/>
-			</circle>
-			<circle fill='#000' stroke='none' cx='54' cy='50' r='6'>
-				<animateTransform
-					attributeName='transform'
-					dur='1s'
-					type='translate'
-					values='0 5 ; 0 -5; 0 5'
-					repeatCount='indefinite'
-					begin='0.3'
-				/>
-			</circle>
-		</svg>
+		<div className='w-full h-full flex items-center justify-center'>
+			<svg
+				className='max-w-28'
+				xmlns='http://www.w3.org/2000/svg'
+				viewBox='0 0 200 200'
+			>
+				<radialGradient
+					id='a11'
+					cx='.66'
+					fx='.66'
+					cy='.3125'
+					fy='.3125'
+					gradientTransform='scale(1.5)'
+				>
+					<stop offset='0' stop-color='#FF7F3C'></stop>
+					<stop offset='.3' stop-color='#FF7F3C' stop-opacity='.9'></stop>
+					<stop offset='.6' stop-color='#FF7F3C' stop-opacity='.6'></stop>
+					<stop offset='.8' stop-color='#FF7F3C' stop-opacity='.3'></stop>
+					<stop offset='1' stop-color='#FF7F3C' stop-opacity='0'></stop>
+				</radialGradient>
+				<circle
+					transform-origin='center'
+					fill='none'
+					stroke='url(#a11)'
+					stroke-width='18'
+					stroke-linecap='round'
+					stroke-dasharray='200 1000'
+					stroke-dashoffset='0'
+					cx='100'
+					cy='100'
+					r='70'
+				>
+					<animateTransform
+						type='rotate'
+						attributeName='transform'
+						calcMode='spline'
+						dur='2'
+						values='360;0'
+						keyTimes='0;1'
+						keySplines='0 0 1 1'
+						repeatCount='indefinite'
+					></animateTransform>
+				</circle>
+				<circle
+					transform-origin='center'
+					fill='none'
+					opacity='.2'
+					stroke='#FF7F3C'
+					stroke-width='18'
+					stroke-linecap='round'
+					cx='100'
+					cy='100'
+					r='70'
+				></circle>
+			</svg>
+		</div>
 	)
 }
 
