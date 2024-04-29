@@ -1,3 +1,5 @@
+'use client'
+
 import { IProduct } from '@/types/product.interface'
 import ProductRating from '@/ui/catalog/product-item/ProductRating'
 import type { FC } from 'react'

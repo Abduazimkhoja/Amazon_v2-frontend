@@ -1,3 +1,4 @@
+'use client'
 import { IProduct } from '@/types/product.interface'
 import { convertPrice } from '@/utils/convertPrice'
 import Image from 'next/image'

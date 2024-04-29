@@ -1,3 +1,5 @@
+'use client'
+
 import Range, { IRange } from '@/ui/range/Range'
 import type { FC } from 'react'
 import { useFilters } from '../../useFilters'

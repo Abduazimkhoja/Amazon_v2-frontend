@@ -1,3 +1,4 @@
+'use client'
 import cn from 'clsx'
 import { forwardRef } from 'react'
 import { IField } from './field.interface'

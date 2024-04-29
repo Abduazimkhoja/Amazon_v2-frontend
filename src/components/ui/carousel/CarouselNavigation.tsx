@@ -1,3 +1,4 @@
+'use client'
 import { useActions } from '@/hooks/useActions'
 import type { FC } from 'react'
 import { BsCaretLeftSquare, BsCaretRightSquare } from 'react-icons/bs'

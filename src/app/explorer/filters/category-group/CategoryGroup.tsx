@@ -1,3 +1,5 @@
+'use client'
+
 import { useCategories } from '@/hooks/queries/useCategories'
 import Loader from '@/ui/Loader'
 import Checkbox, { ICheckbox } from '@/ui/checkbox/Checkbox'

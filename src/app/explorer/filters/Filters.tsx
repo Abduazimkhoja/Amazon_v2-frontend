@@ -1,3 +1,5 @@
+'use client'
+
 import type { FC } from 'react'
 import CategoryGroup from './category-group/CategoryGroup'
 import PriceGroup from './price-group/PriceGroup'

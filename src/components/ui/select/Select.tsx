@@ -1,3 +1,4 @@
+'use client'
 import cn from 'clsx'
 import { useState } from 'react'
 import { BsCaretDownFill } from 'react-icons/bs'

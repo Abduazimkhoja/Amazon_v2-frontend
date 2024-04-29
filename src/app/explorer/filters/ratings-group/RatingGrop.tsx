@@ -1,3 +1,5 @@
+'use client'
+
 import Checkbox, { ICheckbox } from '@/ui/checkbox/Checkbox'
 import type { FC } from 'react'
 import { Rating } from 'react-simple-star-rating'

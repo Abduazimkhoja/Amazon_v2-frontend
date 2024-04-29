@@ -1,4 +1,5 @@
-import { title } from 'process'
+'use client'
+
 import { FC, PropsWithChildren } from 'react'
 
 interface IFilterWrapper {

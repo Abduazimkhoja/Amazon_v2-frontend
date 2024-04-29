@@ -1,3 +1,5 @@
+'use client'
+
 import { ReviewService } from '@/services/review.service'
 import Heading from '@/ui/Heading'
 import Loader from '@/ui/Loader'

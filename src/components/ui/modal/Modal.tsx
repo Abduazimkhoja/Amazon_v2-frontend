@@ -1,3 +1,4 @@
+'use client'
 import type { FC, PropsWithChildren } from 'react'
 import { useRef } from 'react'
 import styles from './Modal.module.scss'

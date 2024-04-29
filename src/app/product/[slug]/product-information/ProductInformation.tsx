@@ -1,3 +1,4 @@
+'use client'
 import { IProduct } from '@/types/product.interface'
 import FavoriteButton from '@/ui/catalog/product-item/FavoriteButton'
 import { convertPrice } from '@/utils/convertPrice'

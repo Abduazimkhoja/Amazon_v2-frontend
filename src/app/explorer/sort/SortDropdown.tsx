@@ -1,3 +1,5 @@
+'use client'
+
 import { EnumProductSort } from '@/services/product/product.types'
 import Select from '@/ui/select/Select'
 import type { FC } from 'react'

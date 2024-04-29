@@ -1,3 +1,4 @@
+'use client'
 import { useAuth } from '@/hooks/useAction'
 import { IReview } from '@/types/review.interface'
 import Heading from '@/ui/Heading'

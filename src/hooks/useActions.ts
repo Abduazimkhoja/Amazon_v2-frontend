@@ -1,3 +1,4 @@
+'use client'
 import { rootActions } from '@/store/root-actions'
 import { bindActionCreators } from '@reduxjs/toolkit'
 import { useMemo } from 'react'

@@ -1,3 +1,4 @@
+'use client'
 import { ICartItem } from '@/types/cart.interface'
 import { convertPrice } from '@/utils/convertPrice'
 import Image from 'next/image'

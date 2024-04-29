@@ -1,3 +1,4 @@
+'use client'
 import type { FC, PropsWithChildren } from 'react'
 import cn from 'clsx'
 import styles from './Checkbox.module.scss'
