@@ -17,20 +17,20 @@ const Loader: FC = () => {
 					fy='.3125'
 					gradientTransform='scale(1.5)'
 				>
-					<stop offset='0' stop-color='#FF7F3C'></stop>
-					<stop offset='.3' stop-color='#FF7F3C' stop-opacity='.9'></stop>
-					<stop offset='.6' stop-color='#FF7F3C' stop-opacity='.6'></stop>
-					<stop offset='.8' stop-color='#FF7F3C' stop-opacity='.3'></stop>
-					<stop offset='1' stop-color='#FF7F3C' stop-opacity='0'></stop>
+					<stop offset='0' stopColor='#FF7F3C'></stop>
+					<stop offset='.3' stopColor='#FF7F3C' stopOpacity='.9'></stop>
+					<stop offset='.6' stopColor='#FF7F3C' stopOpacity='.6'></stop>
+					<stop offset='.8' stopColor='#FF7F3C' stopOpacity='.3'></stop>
+					<stop offset='1' stopColor='#FF7F3C' stopOpacity='0'></stop>
 				</radialGradient>
 				<circle
-					transform-origin='center'
+					origin='center'
 					fill='none'
 					stroke='url(#a11)'
-					stroke-width='18'
-					stroke-linecap='round'
-					stroke-dasharray='200 1000'
-					stroke-dashoffset='0'
+					strokeWidth='18'
+					strokeLinecap='round'
+					strokeDasharray='200 1000'
+					strokeDashoffset='0'
 					cx='100'
 					cy='100'
 					r='70'
@@ -47,12 +47,12 @@ const Loader: FC = () => {
 					></animateTransform>
 				</circle>
 				<circle
-					transform-origin='center'
+					origin='center'
 					fill='none'
 					opacity='.2'
 					stroke='#FF7F3C'
-					stroke-width='18'
-					stroke-linecap='round'
+					strokeWidth='18'
+					strokeLinecap='round'
 					cx='100'
 					cy='100'
 					r='70'
