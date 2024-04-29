@@ -2,7 +2,7 @@
 import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
 import { OrderService } from '@/services/order.service'
-import { IProduct } from '@/types/product.interface'
+import { IProduct, IProducts } from '@/types/product.interface'
 import Heading from '@/ui/Heading'
 import Button from '@/ui/button/Button'
 import ProductItem from '@/ui/catalog/product-item/ProductItem'
@@ -13,7 +13,9 @@ import type { FC } from 'react'
 import styles from './Checkout.module.scss'
 import CheckoutItem from './CheckoutItem'
 
-const Checkout: FC<{ products: IProduct[] }> = ({ products = [] }) => {
+const Checkout: FC<{ products: IProduct[] | IProducts[] }> = ({
+	products = []
+}) => {
 	const { items, total } = useCart()
 
 	const { reset } = useActions()
@@ -38,7 +40,7 @@ const Checkout: FC<{ products: IProduct[] }> = ({ products = [] }) => {
 
 	return (
 		<>
-			{items.length ? (
+			{items.length ? ( 
 				<section className={styles.checkout}>
 					<div>
 						<Heading className='mb-6'>Checkout</Heading>

@@ -13,6 +13,16 @@ export interface IProduct {
 	category: ICategory
 }
 
+export interface IProducts {
+	id: number
+	name: string
+	slug: string
+	price: number
+	reviews: { rating: number }[]
+	images: string[]
+	category: { slug: string }
+}
+
 export interface IProductDetails {
 	product: IProduct
 }

@@ -7,7 +7,6 @@ import { FiMinus, FiPlus, FiTrash } from 'react-icons/fi'
 
 const CartActions: FC<{ item: ICartItem }> = ({ item }) => {
 	const { removeFromCart, changeQuantity } = useActions()
-
 	const { items } = useCart()
 
 	const quantity = items.find(cartItem => cartItem.id === item.id)?.quantity
