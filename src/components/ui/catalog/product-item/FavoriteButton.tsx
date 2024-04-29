@@ -1,7 +1,9 @@
+'use client'
 import { useProfile } from '@/hooks/useProfile'
 import { UserService } from '@/services/user.service'
+import { IconButton } from '@chakra-ui/react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import type { FC } from 'react'
+import { type FC } from 'react'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
 const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
@@ -20,15 +22,17 @@ const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
 
 	const isExists = profile.favorites.some(favorite => favorite.id === productId)
 
+	const icon = isExists ? <AiFillHeart /> : <AiOutlineHeart />
+
 	return (
-		<button
+		<IconButton
+			bg='transparent'
 			onClick={() => {
 				mutate()
 			}}
-			className='text-primary'
-		>
-			{isExists ? <AiFillHeart /> : <AiOutlineHeart />}
-		</button>
+			aria-label='Search database'
+			icon={icon}
+		/>
 	)
 }
 
