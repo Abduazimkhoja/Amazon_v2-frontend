@@ -57,11 +57,13 @@ export const ProductExplorer: FC<IProductExplorer> = ({ initialProducts }) => {
 
 				<section>
 					<Catalog products={data.products} isLoading={isFetching} />
-					<Pagination
-						changePage={page => updateQueryParams('page', `${page}`)}
-						currentPage={queryParams.page}
-						numberPages={data.length / +queryParams.perPage}
-					/>
+					{!isFetching && (
+						<Pagination
+							changePage={page => updateQueryParams('page', `${page}`)}
+							currentPage={queryParams.page}
+							numberPages={data.length / +queryParams.perPage}
+						/>
+					)}
 				</section>
 			</div>
 		</>
