@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { FC, useState } from 'react'
 import cn from 'clsx'
+import { convertImageUrl } from '@/utils/convert-image-url'
 
 interface IProductGallery {
 	images: string[]
@@ -14,7 +15,7 @@ const ProductGallery: FC<IProductGallery> = ({ images }) => {
 	return (
 		<div>
 			<Image
-				src={images[activeIndex]}
+				src={convertImageUrl(images, activeIndex)}
 				alt=''
 				width={500}
 				height={500}
@@ -41,7 +42,7 @@ const ProductGallery: FC<IProductGallery> = ({ images }) => {
 						>
 							<Image
 								draggable={false}
-								src={image}
+								src={convertImageUrl(image)}
 								alt=''
 								width={100}
 								height={100}
