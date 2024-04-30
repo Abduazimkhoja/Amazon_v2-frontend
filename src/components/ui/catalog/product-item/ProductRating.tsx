@@ -1,6 +1,7 @@
 'use client'
 import { IProduct, IProducts } from '@/types/product.interface'
-import { FC, useState } from 'react'
+import { calcProductRating } from '@/utils/calc-product-rating'
+import { FC } from 'react'
 import { Rating } from 'react-simple-star-rating'
 
 interface IProductRating {
@@ -9,12 +10,8 @@ interface IProductRating {
 }
 
 const ProductRating: FC<IProductRating> = ({ product, isText = false }) => {
-	const [rating] = useState<number>(
-		Math.round(
-			product.reviews.reduce((acc, review) => acc + review.rating, 0) /
-				product.reviews.length
-		) || 0
-	)
+	const rating = calcProductRating(product.reviews)
+	const reviewCount = product.reviews.length
 
 	return (
 		<div className='mb-2 flex items-center gap-1'>
@@ -29,9 +26,7 @@ const ProductRating: FC<IProductRating> = ({ product, isText = false }) => {
 			<h5 className='text-sm ml-1' style={{ color: '#eaa904' }}>
 				{rating}
 			</h5>
-			{isText && (
-				<h5 className='text-xs'>({product.reviews.length} reviews)</h5>
-			)}
+			{isText && <h5 className='text-xs'>({reviewCount} reviews)</h5>}
 		</div>
 	)
 }
