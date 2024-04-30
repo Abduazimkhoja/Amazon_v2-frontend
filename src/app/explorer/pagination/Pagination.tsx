@@ -14,19 +14,26 @@ export const Pagination: FC<IPagination> = ({
 	changePage,
 	currentPage
 }) => {
-	const paginationCount = numberPages > 1 ? numberPages : 1
-	const emptyArray = Array.from({ length: paginationCount })
+	if (numberPages < 2) return null
+	const emptyArray = Array.from({ length: numberPages })
+
+	currentPage = Number(currentPage)
+
+	const activeButton = (pageNumber: number) => {
+		if (currentPage === pageNumber) return 'orange'
+		return 'white'
+	}
 
 	return (
 		<div className='text-center mt-16'>
 			{emptyArray.map((_, index) => {
-				const pageNumber = `${index + 1}`
+				const pageNumber = index + 1
 				return (
 					<Button
 						key={pageNumber}
 						size='sm'
-						option={currentPage === pageNumber ? 'orange' : 'white'}
-						onClick={() => changePage(pageNumber)}
+						option={activeButton(pageNumber)}
+						onClick={() => changePage(String(pageNumber))}
 						className='mx-3'
 						disabled={currentPage === pageNumber}
 					>
