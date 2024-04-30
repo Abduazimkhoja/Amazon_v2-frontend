@@ -1,48 +1,87 @@
-import { IProduct } from '@/types/product.interface'
+'use client'
+import { IProducts } from '@/types/product.interface'
+import { calcProductRating } from '@/utils/calc-product-rating'
+import { convertImageUrl } from '@/utils/convert-image-url'
 import { convertPrice } from '@/utils/convertPrice'
-import Image from 'next/image'
+import { Box, Divider, Heading, Image, Text, Tooltip } from '@chakra-ui/react'
 import Link from 'next/link'
 import type { FC } from 'react'
+import { AiFillStar } from 'react-icons/ai'
 import AddToCartButton from './AddToCartButton'
 import FavoriteButton from './FavoriteButton'
-import ProductRating from './ProductRating'
+// import { StarIcon } from 'react-simple-star-rating/dist/components/StarIcon'
 
-const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
-	const { id, slug, images, name, category, price } = product
+const ProductItem: FC<{ product: IProducts }> = ({ product }) => {
+	const { id, slug, images, name, category, price, reviews } = product
+	const productRating = calcProductRating(reviews)
+	const emptyArray = Array.from({ length: 5 })
 
 	return (
-		<div className='animate-scaleIn'>
-			<div className='bg-white rounded-xl relative overflow-hidden'>
-				<div className='flex gap-3 absolute top-2 right-3 z-1 bg- p-2 rounded-full bg-white shadow'>
+		<Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+			<Box position='relative'>
+				<Link href={`/product/${slug}`}>
+					<Image src={convertImageUrl(images)} alt={name} />
+				</Link>
+				<Box position='absolute' top={1} right={1}>
 					<FavoriteButton productId={id} />
 					<AddToCartButton product={product} />
-				</div>
+				</Box>
+			</Box>
 
-				<Link href={`/product/${slug}`}>
-					<Image
-						width={250}
-						height={250}
-						src={`${process.env.SERVER_URL}${images[0]}`}
-						alt={name}
-						className='block mx-auto'
-						priority
-					/>
-				</Link>
-			</div>
-			<Link href={`/product/${slug}-${id}`}>
-				<h3 title={name} className='mt-2 font-semibold line-clamp-1'>
-					{name}
-				</h3>
-			</Link>
-			<Link
-				href={`/category/${category.slug}`}
-				className='text-aqua text-xs mb-2'
-			>
-				{category.name}
-			</Link>
-			<ProductRating product={product} isText />
-			<h4 className='text-2xl font-semibold'>{convertPrice(price)}</h4>
-		</div>
+			<Box>
+				<Box paddingInline='6' paddingBlock='3'>
+					<Tooltip label={name} aria-label='A tooltip'>
+						<Link className='flex-1' href={`/product/${slug}`}>
+							<Heading
+								mt='1'
+								fontWeight='semibold'
+								lineHeight='tight'
+								size='md'
+								noOfLines={1}
+							>
+								{name}
+							</Heading>
+						</Link>
+					</Tooltip>
+					<Tooltip label={category.slug} aria-label='A tooltip'>
+						<Link href={`/category/${category.slug}`}>
+							<Box
+								display='inline'
+								color='gray.500'
+								fontWeight='semibold'
+								letterSpacing='wide'
+								fontSize='xs'
+								textTransform='uppercase'
+							>
+								{category.slug}
+							</Box>
+						</Link>
+					</Tooltip>
+
+					<Box display='flex' mt='2' alignItems='center'>
+						{emptyArray.map((_, i) => (
+							<AiFillStar
+								key={i}
+								className={i < productRating ? 'text-primary' : 'text-gray'}
+							/>
+						))}
+						<Box as='span' ml='2' color='gray.600' fontSize='sm'>
+							{reviews.length} reviews
+						</Box>
+					</Box>
+				</Box>
+				<Divider />
+				<Text
+					paddingBlock='2'
+					paddingInline='6'
+					fontWeight='600'
+					fontSize='2xl'
+					textAlign='right'
+				>
+					{convertPrice(price)}
+				</Text>
+			</Box>
+		</Box>
 	)
 }
 
