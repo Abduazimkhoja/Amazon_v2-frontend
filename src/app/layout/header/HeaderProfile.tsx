@@ -4,16 +4,22 @@ import { useActions } from '@/hooks/useActions'
 import { useOutside } from '@/hooks/useOutside'
 import { useProfile } from '@/hooks/useProfile'
 import SquareButton from '@/ui/button/SquareButton'
-import Image from 'next/image'
+import {
+	Avatar,
+	Menu,
+	MenuButton,
+	MenuDivider,
+	MenuGroup,
+	MenuItem,
+	MenuList
+} from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import type { FC } from 'react'
-import { FiLogOut } from 'react-icons/fi'
 import { MdOutlineLogin } from 'react-icons/md'
 
 const HeaderProfile: FC = () => {
 	const { profile } = useProfile()
-	const { isShow, ref, setIsShow } = useOutside(false)
 	const { user } = useAuth()
 	const router = useRouter()
 	const { logout } = useActions()
@@ -28,40 +34,23 @@ const HeaderProfile: FC = () => {
 	}
 
 	return (
-		<div className='relative' ref={ref}>
-			<button onClick={() => setIsShow(!isShow)}>
+		<Menu>
+			<MenuButton>
 				{profile?.avatarPath && (
-					<Image
-						width={43}
-						height={43}
-						src={profile.avatarPath}
-						alt='profile'
-						className='rounded-full border-primary border border-solid animate-opacity'
-					/>
+					<Avatar size='md' name='Ryan Florence' src={profile.avatarPath} />
 				)}
-			</button>
-			{/* modal */}
-			{isShow && (
-				<div
-					className='flex flex-col gap-2 absolute w-40 right-2 z-20 bg-white shadow py-2 px-4 rounded-md'
-					style={{ top: 'calc(100%+1rem)' }}
-				>
-					<Link
-						href='/my-orders'
-						className='hover:text-primary duration-300 transition-colors'
-					>
-						My orders
-					</Link>
-					<button
-						className=' flex items-center hover:text-primary duration-300 transition-colors'
-						onClick={() => logout()}
-					>
-						<FiLogOut />
-						<span className='ml-2'>Logout</span>
-					</button>
-				</div>
-			)}
-		</div>
+			</MenuButton>
+			<MenuList zIndex={2}>
+				<MenuGroup title='Profile'>
+					<MenuItem>My Account</MenuItem>
+					<MenuItem>
+						<Link href='/my-orders'>Payments</Link>
+					</MenuItem>
+          <MenuDivider/>
+					<MenuItem borderTop='ActiveBorder' onClick={() => logout()}>Logout</MenuItem>
+				</MenuGroup>
+			</MenuList>
+		</Menu>
 	)
 }
 
