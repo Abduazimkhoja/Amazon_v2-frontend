@@ -1,40 +1,59 @@
 'use client'
-import { useRouter } from 'next/navigation'
-import { FC, useState } from 'react'
-import { BsSearch } from 'react-icons/bs'
+import { useFilters } from '@/app/explorer/useFilters'
+import { useActions } from '@/hooks/useActions'
+import {
+	Button,
+	FormControl,
+	Input,
+	InputGroup,
+	InputLeftElement,
+	InputRightAddon
+} from '@chakra-ui/react'
+import { usePathname, useRouter } from 'next/navigation'
+import { FC, useRef } from 'react'
+import { BiSearchAlt } from 'react-icons/bi'
 
 const Search: FC = () => {
-	const [searchTerm, setSearchTerm] = useState('')
-	const router = useRouter()
+	const searchRef = useRef<HTMLInputElement | null>(null)
+	const { push } = useRouter()
+	const pathname = usePathname()
+	const { queryParams, updateQueryParams } = useFilters()
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = (e: React.FormEvent<HTMLDivElement>) => {
+		const value = searchRef.current?.value.trim()
 		e.preventDefault()
-		if (searchTerm.trim() !== '') {
-			router.push(`/explorer?searchTerm=${encodeURIComponent(searchTerm)}`)
+		if (pathname !== 'explorer') return push(`/explorer?searchTerm=${value}`)
+		if (value !== '') {
+			updateQueryParams('searchTerm', value || '')
 		}
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<div
-				className='border border-solid border-gray/10 grid w-1/3 rounded-xl overflow-hidden'
-				style={{ gridTemplateColumns: '1fr 0.1fr' }}
-			>
-				<input
-					type='search'
-					className='bg-[#22303e] text-sm py-2 px-4 text-white'
-					value={searchTerm}
-					onChange={e => setSearchTerm(e.target.value)}
+		<FormControl as='form' onSubmit={handleSubmit}>
+			<InputGroup border='0' borderRadius='12' overflow='hidden' size='lg'>
+				<InputLeftElement
+					pointerEvents='none'
+					children={<BiSearchAlt color='white' />}
+				/>
+				<Input
+					ref={searchRef}
+					defaultValue={queryParams.searchTerm}
+					// onChange={e => setSearchTerm(e.target.value)}
+					_hover={{}}
+					borderRadius='0'
+					border='0'
+					bg='gray.700'
+					type='text'
+					textColor='white'
 					placeholder='Search...'
 				/>
-				<button
-					type='submit'
-					className='bg-primary text-white flex items-center justify-center p-2.5'
-				>
-					<BsSearch />
-				</button>
-			</div>
-		</form>
+				<InputRightAddon p='0' borderRadius='0' border='0'>
+					<Button type='submit' colorScheme='orange' borderRadius='0' size='lg'>
+						Search
+					</Button>
+				</InputRightAddon>
+			</InputGroup>
+		</FormControl>
 	)
 }
 
