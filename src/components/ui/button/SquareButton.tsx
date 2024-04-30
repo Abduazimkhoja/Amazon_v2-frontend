@@ -1,5 +1,6 @@
 'use client'
-import type { FC } from 'react'
+import { Button, Tag } from '@chakra-ui/react'
+import { type FC } from 'react'
 import { IconType } from 'react-icons'
 
 interface ISquareButton {
@@ -10,18 +11,19 @@ interface ISquareButton {
 
 const SquareButton: FC<ISquareButton> = ({ Icon, onClick, number }) => {
 	return (
-		<button
+		<Button
+			size='lg'
 			onClick={onClick}
-			className='h-10 w-10 bg-primary flex items-center justify-center hover:bg-primary/90 transition-colors duration-200 relative rounded
-      '
+			leftIcon={<Icon />}
+			colorScheme='orange'
 		>
+			Cart
 			{!!number && (
-				<span className='flex h-4 w-4 items-center justify-center rounded-full bg-white p-0.5 text-[0.75rem] text-secondary absolute -top-1 -right-1'>
+				<Tag ml='2' size='md' colorScheme='red'>
 					{number}
-				</span>
+				</Tag>
 			)}
-			<Icon className='text-secondary' size={21} />
-		</button>
+		</Button>
 	)
 }
 
