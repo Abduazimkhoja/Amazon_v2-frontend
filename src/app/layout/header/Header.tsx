@@ -5,6 +5,7 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import AdminLink from './AdminLink'
 import HeaderProfile from './HeaderProfile'
 import Search from './Search'
+import ThemeMode from './ThemeMode'
 import HeaderCart from './cart/HeaderCart'
 
 const Header: FC = () => {
@@ -18,6 +19,7 @@ const Header: FC = () => {
 					<AiOutlineHeart size={28} />
 				</Link>
 				<HeaderCart />
+				<ThemeMode />
 				<HeaderProfile />
 			</div>
 		</header>
