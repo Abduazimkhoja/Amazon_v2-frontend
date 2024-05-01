@@ -37,17 +37,24 @@ const HeaderProfile: FC = () => {
 		<Menu>
 			<MenuButton>
 				{profile?.avatarPath && (
-					<Avatar size='md' name='Ryan Florence' src={profile.avatarPath} />
+					<Avatar
+						border='2px solid orange'
+						size='md'
+						name='Ryan Florence'
+						src={profile.avatarPath}
+					/>
 				)}
 			</MenuButton>
-			<MenuList zIndex={2}>
+			<MenuList zIndex='20'>
 				<MenuGroup title='Profile'>
 					<MenuItem>My Account</MenuItem>
 					<MenuItem>
 						<Link href='/my-orders'>Payments</Link>
 					</MenuItem>
-          <MenuDivider/>
-					<MenuItem borderTop='ActiveBorder' onClick={() => logout()}>Logout</MenuItem>
+					<MenuDivider />
+					<MenuItem borderTop='ActiveBorder' onClick={() => logout()}>
+						Logout
+					</MenuItem>
 				</MenuGroup>
 			</MenuList>
 		</Menu>
