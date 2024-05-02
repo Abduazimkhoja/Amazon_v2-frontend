@@ -14,7 +14,7 @@ export const useAdminOrders = () => {
 			data.map((order): IListItem => {
 				return {
 					id: order.id,
-					editUrl: getAdminUrl(`/orders/edit/${order.id}`),
+					viewUrl: getAdminUrl(`/orders/${order.id}`),
 					items: [
 						`# ${order.id}`,
 						order.status,
