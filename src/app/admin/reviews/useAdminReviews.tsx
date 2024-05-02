@@ -2,6 +2,7 @@
 import { getAdminUrl } from '@/config/url.config'
 import { ReviewService } from '@/services/review.service'
 import { IListItem } from '@/ui/admin/admin-list/admin-list.interface'
+import { arrayGenerator } from '@/utils/array-generator'
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const useAdminReviews = () => {
@@ -16,7 +17,7 @@ export const useAdminReviews = () => {
 					editUrl: getAdminUrl(`/reviews/edit/${review.id}`),
 					items: [
 						`${review.id}`,
-						Array.from({ length: review.rating })
+						arrayGenerator(review.rating)
 							.map(() => '⭐')
 							.join(' ') || '0',
 						review.user.name
