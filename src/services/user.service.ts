@@ -12,6 +12,13 @@ type TypeData = {
 }
 
 export const UserService = {
+  async getAll() {
+		return instance<IUser[]>({
+			url: `${USERS}`,
+			method: 'GET'
+		})
+	},
+
 	async getProfile() {
 		return instance<IFullUser>({
 			url: `${USERS}/profile`,
