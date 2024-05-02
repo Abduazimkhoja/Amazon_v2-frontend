@@ -1,6 +1,7 @@
 'use client'
 
 import Button from '@/ui/button/Button'
+import { arrayGenerator } from '@/utils/array-generator'
 import type { FC } from 'react'
 
 interface IPagination {
@@ -15,8 +16,7 @@ export const Pagination: FC<IPagination> = ({
 	currentPage
 }) => {
 	if (numberPages < 2) return null
-	const emptyArray = Array.from({ length: numberPages })
-
+	const emptyArray = arrayGenerator(numberPages)
 	currentPage = Number(currentPage)
 
 	const activeButton = (pageNumber: number) => {
