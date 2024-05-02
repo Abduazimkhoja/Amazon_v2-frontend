@@ -1,21 +1,25 @@
+import { Skeleton, Td, Tr } from '@chakra-ui/react'
 import type { FC } from 'react'
-import styles from './AdminList.module.scss'
 import AdminActions from './admin-actions/AdminActions'
 import { IAdminListItem } from './admin-list.interface'
 
-const AdminListItem: FC<IAdminListItem> = ({ removeHandler, listItem }) => {
+const AdminListItem: FC<IAdminListItem> = ({
+	removeHandler,
+	listItem
+}) => {
 	return (
-		<div className={styles.item}>
+		<Tr>
 			{listItem.items.map(value => (
-				<div key={value}>{value}</div>
+				<Td key={value}>{value}</Td>
 			))}
-
-			<AdminActions
-				viewUrl={listItem.viewUrl}
-				editUrl={listItem.editUrl}
-				removeHandler={removeHandler}
-			/>
-		</div>
+			<Td display='flex' justifyContent='flex-end'>
+				<AdminActions
+					viewUrl={listItem.viewUrl}
+					editUrl={listItem.editUrl}
+					removeHandler={removeHandler}
+				/>
+			</Td>
+		</Tr>
 	)
 }
 

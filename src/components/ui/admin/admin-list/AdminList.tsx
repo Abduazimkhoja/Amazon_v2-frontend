@@ -1,7 +1,7 @@
 'use client'
 import Loader from '@/ui/Loader'
+import { Box, Table, TableContainer, Tbody } from '@chakra-ui/react'
 import type { FC } from 'react'
-import styles from './AdminList.module.scss'
 import AdminListItem from './AdminListItem'
 import { IListItem } from './admin-list.interface'
 
@@ -17,23 +17,34 @@ const AdminList: FC<IAdminList> = ({
 	listItems = []
 }) => {
 	return (
-		<div>
-			{isLoading ? (
-				<Loader />
-			) : listItems.length ? (
-				listItems.map(listItem => (
-					<AdminListItem
-						key={listItem.id}
-						removeHandler={
-							removeHandler ? () => removeHandler(listItem.id) : undefined
-						}
-						listItem={listItem}
-					/>
-				))
-			) : (
-				<div className={styles.notFound}>Elements not found</div>
-			)}
-		</div>
+		<TableContainer>
+			<Table variant='simple'>
+				{/* <Thead>
+					<Tr>
+						<Th>To convert</Th>
+						<Th>into</Th>
+						<Th isNumeric>multiply by</Th>
+					</Tr>
+				</Thead> */}
+				<Tbody>
+					{isLoading ? (
+						<Loader />
+					) : listItems.length ? (
+						listItems.map(listItem => (
+							<AdminListItem
+								key={listItem.id}
+								removeHandler={
+									removeHandler ? () => removeHandler(listItem.id) : undefined
+								}
+								listItem={listItem}
+							/>
+						))
+					) : (
+						<Box children='Elements not found' />
+					)}
+				</Tbody>
+			</Table>
+		</TableContainer>
 	)
 }
 
