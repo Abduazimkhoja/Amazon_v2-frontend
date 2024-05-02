@@ -1,5 +1,6 @@
 'use client'
 import { IProducts } from '@/types/product.interface'
+import { arrayGenerator } from '@/utils/array-generator'
 import { calcProductRating } from '@/utils/calc-product-rating'
 import { convertImageUrl } from '@/utils/convert-image-url'
 import { convertPrice } from '@/utils/convertPrice'
@@ -14,7 +15,7 @@ import FavoriteButton from './FavoriteButton'
 const ProductItem: FC<{ product: IProducts }> = ({ product }) => {
 	const { id, slug, images, name, category, price, reviews } = product
 	const productRating = calcProductRating(reviews)
-	const emptyArray = Array.from({ length: 5 })
+	const emptyArray = arrayGenerator(5)
 
 	return (
 		<Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
