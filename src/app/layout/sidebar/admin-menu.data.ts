@@ -21,5 +21,9 @@ export const ADMIN_MENU: IMenuItem[] = [
 	{
 		label: 'Orders',
 		href: getAdminUrl('/orders')
+	},
+	{
+		label: 'Users',
+		href: getAdminUrl('/users')
 	}
 ]
