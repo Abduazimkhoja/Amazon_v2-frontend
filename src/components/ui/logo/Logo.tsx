@@ -1,5 +1,6 @@
 'use client'
 import { useIsAdminPanel } from '@/hooks/useIsAdminPanel'
+import { Box, Heading } from '@chakra-ui/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { FC } from 'react'
@@ -14,7 +15,20 @@ const Logo: FC<ILogo> = ({ url, width = 180, height = 60 }) => {
 	const { isAdminPanel } = useIsAdminPanel()
 
 	if (isAdminPanel) {
-		return <h2 className='text-3x1 text-white font-semibold'>Admin Panel</h2>
+		return (
+			<Box paddingBlock='5' paddingInline='6'>
+				<Link href='/'>
+					<Heading
+						size='lg'
+						textTransform='uppercase'
+						colorScheme='orange'
+						textColor='white'
+					>
+						Admin Panel
+					</Heading>
+				</Link>
+			</Box>
+		)
 	}
 
 	return (
