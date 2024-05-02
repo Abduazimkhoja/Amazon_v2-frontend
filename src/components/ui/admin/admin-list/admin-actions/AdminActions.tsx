@@ -1,6 +1,25 @@
+'use client'
+import {
+	AlertDialog,
+	AlertDialogBody,
+	AlertDialogContent,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogOverlay,
+	Button,
+	Flex,
+	IconButton,
+	Tooltip,
+	useDisclosure
+} from '@chakra-ui/react'
 import { useRouter } from 'next/navigation'
 import type { FC } from 'react'
-import { RiDeleteRow, RiEdit2Line, RiExternalLinkLine } from 'react-icons/ri'
+import React from 'react'
+import {
+	RiDeleteBin6Line,
+	RiEdit2Line,
+	RiExternalLinkLine
+} from 'react-icons/ri'
 import { IListItem } from '../admin-list.interface'
 
 interface IAdminActions extends Pick<IListItem, 'editUrl' | 'viewUrl'> {
@@ -13,25 +32,68 @@ const AdminActions: FC<IAdminActions> = ({
 	viewUrl
 }) => {
 	const { push } = useRouter()
+	const { isOpen, onOpen, onClose } = useDisclosure()
+	const cancelRef = React.useRef<HTMLButtonElement | null>(null)
 
 	return (
-		<div>
+		<Flex gap='3'>
 			{viewUrl && (
-				<button onClick={() => push(viewUrl)}>
-					<RiExternalLinkLine />
-				</button>
+				<Tooltip label='View'>
+					<IconButton
+						colorScheme='blue'
+						onClick={() => push(viewUrl)}
+						icon={<RiExternalLinkLine size='20' />}
+						aria-label='view'
+					/>
+				</Tooltip>
 			)}
 			{editUrl && (
-				<button onClick={() => push(editUrl)}>
-					<RiEdit2Line />
-				</button>
+				<Tooltip label='Edit'>
+					<IconButton
+						colorScheme='green'
+						onClick={() => push(editUrl)}
+						icon={<RiEdit2Line size='20' />}
+						aria-label='edit'
+					/>
+				</Tooltip>
 			)}
 			{removeHandler && (
-				<button onClick={removeHandler}>
-					<RiDeleteRow />
-				</button>
+				<Tooltip label='Delete'>
+					<IconButton
+						colorScheme='red'
+						onClick={onOpen}
+						icon={<RiDeleteBin6Line size='20' />}
+						aria-label='delete'
+					/>
+				</Tooltip>
 			)}
-		</div>
+			<AlertDialog
+				isOpen={isOpen}
+				leastDestructiveRef={cancelRef}
+				onClose={onClose}
+			>
+				<AlertDialogOverlay>
+					<AlertDialogContent>
+						<AlertDialogHeader fontSize='lg' fontWeight='bold'>
+							Delete Customer
+						</AlertDialogHeader>
+
+						<AlertDialogBody>
+							Are you sure? You can't undo this action afterwards.
+						</AlertDialogBody>
+
+						<AlertDialogFooter>
+							<Button ref={cancelRef} onClick={onClose}>
+								Cancel
+							</Button>
+							<Button colorScheme='red' onClick={removeHandler} ml={3}>
+								Delete
+							</Button>
+						</AlertDialogFooter>
+					</AlertDialogContent>
+				</AlertDialogOverlay>
+			</AlertDialog>
+		</Flex>
 	)
 }
 
