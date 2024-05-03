@@ -14,31 +14,31 @@ import { FC, useRef } from 'react'
 import { BiSearchAlt } from 'react-icons/bi'
 
 const Search: FC = () => {
-	const searchRef = useRef<HTMLInputElement | null>(null)
 	const { push } = useRouter()
 	const pathname = usePathname()
 	const { queryParams, updateQueryParams } = useFilters()
 
-	const handleSubmit = (e: React.FormEvent<HTMLDivElement>) => {
-		const value = searchRef.current?.value.trim()
-		e.preventDefault()
-		if (pathname !== 'explorer') return push(`/explorer?searchTerm=${value}`)
-		if (value !== '') {
-			updateQueryParams('searchTerm', value || '')
+	const handleSubmit = (formData: FormData) => {
+		const search = formData.get('search')?.toString().trim()
+		if (search === '') return null
+
+		if (pathname === 'explorer') {
+			updateQueryParams('searchTerm', search || '')
+		} else {
+			push(`/explorer?searchTerm=${search}`)
 		}
 	}
 
 	return (
-		<FormControl as='form' onSubmit={handleSubmit}>
+		<FormControl action={handleSubmit} as='form'>
 			<InputGroup border='0' borderRadius='12' overflow='hidden' size='lg'>
 				<InputLeftElement
 					pointerEvents='none'
 					children={<BiSearchAlt color='white' />}
 				/>
 				<Input
-					ref={searchRef}
+					name='search'
 					defaultValue={queryParams.searchTerm}
-					// onChange={e => setSearchTerm(e.target.value)}
 					_hover={{}}
 					borderRadius='0'
 					border='0'
