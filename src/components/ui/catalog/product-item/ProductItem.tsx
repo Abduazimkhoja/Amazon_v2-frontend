@@ -10,7 +10,6 @@ import type { FC } from 'react'
 import { AiFillStar } from 'react-icons/ai'
 import AddToCartButton from './AddToCartButton'
 import FavoriteButton from './FavoriteButton'
-// import { StarIcon } from 'react-simple-star-rating/dist/components/StarIcon'
 
 const ProductItem: FC<{ product: IProducts }> = ({ product }) => {
 	const { id, slug, images, name, category, price, reviews } = product
