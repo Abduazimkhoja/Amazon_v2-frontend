@@ -1,17 +1,17 @@
 'use client'
 import { useAuth } from '@/hooks/useAction'
 import { useActions } from '@/hooks/useActions'
-import { useOutside } from '@/hooks/useOutside'
 import { useProfile } from '@/hooks/useProfile'
-import SquareButton from '@/ui/button/SquareButton'
 import {
 	Avatar,
+	IconButton,
 	Menu,
 	MenuButton,
 	MenuDivider,
 	MenuGroup,
 	MenuItem,
-	MenuList
+	MenuList,
+	Tooltip
 } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -26,10 +26,15 @@ const HeaderProfile: FC = () => {
 
 	if (!user) {
 		return (
-			<SquareButton
-				Icon={MdOutlineLogin}
-				onClick={() => router.push('/auth')}
-			/>
+			<Tooltip label='sing in'>
+				<IconButton
+					size='lg'
+					colorScheme='orange'
+					aria-label='sing in'
+					icon={<MdOutlineLogin size='22' />}
+					onClick={() => router.push('/auth')}
+				/>
+			</Tooltip>
 		)
 	}
 
