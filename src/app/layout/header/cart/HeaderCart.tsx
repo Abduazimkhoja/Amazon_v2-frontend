@@ -7,11 +7,11 @@ import type { FC } from 'react'
 import { RiShoppingCartLine } from 'react-icons/ri'
 
 const Cart: FC = () => {
-	const { items } = useCart()
+	const { length } = useCart()
 
 	return (
 		<Link href='/checkout' className='relative'>
-			<SquareButton Icon={RiShoppingCartLine} number={items.length} />
+			<SquareButton Icon={RiShoppingCartLine} number={length} />
 		</Link>
 	)
 }
