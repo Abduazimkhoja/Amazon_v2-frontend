@@ -30,8 +30,10 @@ const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
 		<AiOutlineHeart className='text-red' />
 	)
 
+	const tooltipLabel = isExists ? 'Delete from favorites' : 'Add to favorite'
+
 	return (
-		<Tooltip label='Add to favorite'>
+		<Tooltip label={tooltipLabel}>
 			<IconButton
 				bg='transparent'
 				onClick={() => {
