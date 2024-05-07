@@ -20,7 +20,7 @@ const CartItem: FC<{ item: ICartItem }> = ({ item }) => {
 			<div className='whitespace-nowrap overflow-hidden'>
 				<div className={styles.name}>{name}</div>
 				<div className={styles.price}>{convertPrice(price)}</div>
-				<CartActions item={item} />
+				<CartActions productId={item.id} />
 			</div>
 		</div>
 	)

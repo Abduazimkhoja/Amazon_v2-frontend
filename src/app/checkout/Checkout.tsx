@@ -3,8 +3,6 @@ import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
 import { OrderService } from '@/services/order.service'
 import { IProduct, IProducts } from '@/types/product.interface'
-import Heading from '@/ui/Heading'
-import Button from '@/ui/button/Button'
 import ProductItem from '@/ui/catalog/product-item/ProductItem'
 import { convertPrice } from '@/utils/convertPrice'
 import { useMutation } from '@tanstack/react-query'
@@ -12,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import type { FC } from 'react'
 import styles from './Checkout.module.scss'
 import CheckoutItem from './CheckoutItem'
+import { Button, Flex, Heading } from '@chakra-ui/react'
 
 const Checkout: FC<{ products: IProduct[] | IProducts[] }> = ({
 	products = []
@@ -40,22 +39,26 @@ const Checkout: FC<{ products: IProduct[] | IProducts[] }> = ({
 
 	return (
 		<>
-			{items.length ? ( 
+			{items.length ? (
 				<section className={styles.checkout}>
 					<div>
-						<Heading className='mb-6'>Checkout</Heading>
-						<div className={styles.list}>
+						<Heading>There are 3 products in the basket</Heading>
+						<Flex flexDirection='column' gap='6' className={styles.list}>
 							{items.map(item => (
-								<CheckoutItem key={item.id} product={item.product} />
+								<CheckoutItem
+									key={item.id}
+									product={item.product}
+									itemId={item.id}
+								/>
 							))}
-						</div>
+						</Flex>
 						<div className={styles.footer}>
 							<div className={styles.total}>
 								<div>Total Cost</div>
 								<div>{convertPrice(total)}</div>
 							</div>
 							<Button
-								option='white'
+								colorScheme='orange'
 								size='lg'
 								className='mt-5 mb-2'
 								onClick={() => mutate()}
