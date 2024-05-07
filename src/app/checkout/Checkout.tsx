@@ -69,18 +69,7 @@ const Checkout: FC<{ products: IProduct[] | IProducts[] }> = ({
 						</div>
 					</div>
 					<div>
-						<Heading className='mb-6 text-2x1'>Recommended products</Heading>
-						<div className={styles.recommended}>
-							{products
-								.filter(
-									product =>
-										!items.map(item => item.product.id).includes(product.id)
-								)
-								.slice(0, 2)
-								.map(product => (
-									<ProductItem product={product} key={product.id} />
-								))}
-						</div>
+						
 					</div>
 				</section>
 			) : null}
