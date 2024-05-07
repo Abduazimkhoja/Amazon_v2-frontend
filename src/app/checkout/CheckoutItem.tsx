@@ -21,10 +21,11 @@ import type { FC } from 'react'
 import { BiTrash } from 'react-icons/bi'
 import CartActions from '../layout/header/cart/cart-item/cart-action/cartAction'
 
-const CheckoutItem: FC<{ product: IProduct | IProducts; itemId: number }> = ({
-	itemId,
-	product
-}) => {
+const CheckoutItem: FC<{
+	product: IProduct | IProducts
+	itemId: number
+	commonPrice: number
+}> = ({ itemId, product, commonPrice }) => {
 	const { id, images, name, category, price, slug } = product
 	const { removeFromCart } = useActions()
 
@@ -98,7 +99,7 @@ const CheckoutItem: FC<{ product: IProduct | IProducts; itemId: number }> = ({
 					<CartActions itemId={itemId} />
 
 					<Text paddingBlock='2' fontWeight='600' fontSize='2xl'>
-						{convertPrice(price)}
+						{convertPrice(commonPrice)}
 					</Text>
 				</Center>
 			</Flex>

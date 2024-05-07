@@ -49,6 +49,7 @@ const Checkout: FC<{ products: IProduct[] | IProducts[] }> = ({
 									key={item.id}
 									product={item.product}
 									itemId={item.id}
+									commonPrice={item.price * item.quantity}
 								/>
 							))}
 						</Flex>
