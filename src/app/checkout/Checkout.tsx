@@ -42,7 +42,7 @@ const Checkout: FC<{ products: IProduct[] | IProducts[] }> = ({
 			{items.length ? (
 				<section className={styles.checkout}>
 					<div>
-						<Heading>There are 3 products in the basket</Heading>
+						<Heading>There are {items.length} products in the basket</Heading>
 						<Flex flexDirection='column' gap='6' className={styles.list}>
 							{items.map(item => (
 								<CheckoutItem
