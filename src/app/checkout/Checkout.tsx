@@ -3,14 +3,21 @@ import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
 import { OrderService } from '@/services/order.service'
 import { IProduct, IProducts } from '@/types/product.interface'
-import ProductItem from '@/ui/catalog/product-item/ProductItem'
 import { convertPrice } from '@/utils/convertPrice'
+import {
+	Box,
+	Button,
+	Divider,
+	Flex,
+	Grid,
+	GridItem,
+	Heading
+} from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import type { FC } from 'react'
 import styles from './Checkout.module.scss'
 import CheckoutItem from './CheckoutItem'
-import { Button, Flex, Heading } from '@chakra-ui/react'
 
 const Checkout: FC<{ products: IProduct[] | IProducts[] }> = ({
 	products = []
@@ -40,10 +47,17 @@ const Checkout: FC<{ products: IProduct[] | IProducts[] }> = ({
 	return (
 		<>
 			{items.length ? (
-				<section className={styles.checkout}>
-					<div>
+				<Grid
+					templateAreas={`"header header"
+        "products aside"`}
+					templateColumns='1fr 0.5fr'
+					gap='6'
+				>
+					<GridItem area='header'>
 						<Heading>There are {items.length} products in the basket</Heading>
-						<Flex flexDirection='column' gap='6' className={styles.list}>
+					</GridItem>
+					<GridItem area='products'>
+						<Flex flexDirection='column' gap='6'>
 							{items.map(item => (
 								<CheckoutItem
 									key={item.id}
@@ -53,25 +67,25 @@ const Checkout: FC<{ products: IProduct[] | IProducts[] }> = ({
 								/>
 							))}
 						</Flex>
-						<div className={styles.footer}>
-							<div className={styles.total}>
-								<div>Total Cost</div>
-								<div>{convertPrice(total)}</div>
-							</div>
-							<Button
-								colorScheme='orange'
-								size='lg'
-								className='mt-5 mb-2'
-								onClick={() => mutate()}
-							>
-								Place order
-							</Button>
-						</div>
-					</div>
-					<div>
-						
-					</div>
-				</section>
+					</GridItem>
+					<GridItem area='aside'>
+						<Flex mb='4' justifyContent='space-between'>
+							<Heading>Итого:</Heading>
+							<Heading>{convertPrice(total)}</Heading>
+						</Flex>
+						<Divider />
+
+						<Button
+							mt='4'
+							colorScheme='orange'
+							w='full'
+							size='lg'
+							onClick={() => mutate()}
+						>
+							Place order
+						</Button>
+					</GridItem>
+				</Grid>
 			) : null}
 		</>
 	)
