@@ -5,7 +5,6 @@ import { OrderService } from '@/services/order.service'
 import { IProduct, IProducts } from '@/types/product.interface'
 import { convertPrice } from '@/utils/convertPrice'
 import {
-	Box,
 	Button,
 	Divider,
 	Flex,
@@ -16,7 +15,6 @@ import {
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import type { FC } from 'react'
-import styles from './Checkout.module.scss'
 import CheckoutItem from './CheckoutItem'
 
 const Checkout: FC<{ products: IProduct[] | IProducts[] }> = ({
@@ -86,7 +84,9 @@ const Checkout: FC<{ products: IProduct[] | IProducts[] }> = ({
 						</Button>
 					</GridItem>
 				</Grid>
-			) : null}
+			) : (
+				<Heading>Not Products</Heading>
+			)}
 		</>
 	)
 }
