@@ -5,7 +5,6 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import AdminLink from './AdminLink'
 import HeaderProfile from './HeaderProfile'
 import Search from './Search'
-import ThemeMode from './ThemeMode'
 import HeaderCart from './cart/HeaderCart'
 
 const Header: FC = () => {
@@ -15,11 +14,14 @@ const Header: FC = () => {
 			<Search />
 			<div className='flex items-center justify-end gap-10'>
 				<AdminLink />
-				<Link href='/favorites' className='text-white'>
-					<AiOutlineHeart size={28} />
+				<Link
+					href='/favorites'
+					className='hover:text-primary transition-colors duration-200 text-white inline-block text-lg'
+				>
+					<AiOutlineHeart size='29' />
 				</Link>
 				<HeaderCart />
-				<ThemeMode />
+				{/* <ThemeMode /> */}
 				<HeaderProfile />
 			</div>
 		</header>
