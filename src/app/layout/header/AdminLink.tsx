@@ -11,16 +11,14 @@ const AdminLink: FC = () => {
 	const isAdminAndNotAdminPanel = user?.isAdmin && !isAdminPanel
 
 	return (
-		<div>
-			{isAdminAndNotAdminPanel && (
-				<Link
-					href='/admin'
-					className='hover:text-primary transition-colors duration-200 text-white inline-block text-lg'
-				>
-					<MdOutlineAdminPanelSettings size={29} />
-				</Link>
-			)}
-		</div>
+		isAdminAndNotAdminPanel && (
+			<Link
+				href='/admin'
+				className='hover:text-primary transition-colors duration-200 text-white inline-block text-lg'
+			>
+				<MdOutlineAdminPanelSettings size={29} />
+			</Link>
+		)
 	)
 }
 
