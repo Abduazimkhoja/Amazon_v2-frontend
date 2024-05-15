@@ -5,7 +5,6 @@ import Providers from '@/providers/Providers'
 import type { Metadata } from 'next'
 import { Golos_Text } from 'next/font/google'
 import Header from './layout/header/Header'
-import Sidebar from './layout/sidebar/Sidebar'
 
 const golos = Golos_Text({
 	weight: ['400', '500', '600', '700'],
@@ -46,12 +45,10 @@ export default function RootLayout({
 				<Providers>
 					<div className='bg-secondary '>
 						<Header />
-						<div className='grid' style={{ gridTemplateColumns: '1fr 6fr' }}>
-							<Sidebar />
-							<main className='p-12 pb-52 bg-bg-color rounded-tl-lg'>
-								{children}
-							</main>
-						</div>
+						{/* <div className='grid' style={{ gridTemplateColumns: '1fr 6fr' }}> */}
+						{/* <Sidebar /> */}
+						<main className='p-12 pb-52 bg-bg-color'>{children}</main>
+						{/* </div> */}
 					</div>
 				</Providers>
 				<div id='modal'></div>
