@@ -41,13 +41,13 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en' className={golos.className}>
-			<body>
+			<body className='bg-bg-color'>
 				<Providers>
-					<div className='bg-secondary '>
+					<div>
 						<Header />
 						{/* <div className='grid' style={{ gridTemplateColumns: '1fr 6fr' }}> */}
 						{/* <Sidebar /> */}
-						<main className='p-12 pb-52 bg-bg-color'>{children}</main>
+						<main className='pt-8 pb-52'>{children}</main>
 						{/* </div> */}
 					</div>
 				</Providers>
