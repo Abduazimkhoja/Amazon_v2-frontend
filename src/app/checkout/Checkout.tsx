@@ -43,7 +43,7 @@ const Checkout: FC<{ products: IProduct[] | IProducts[] }> = ({
 	})
 
 	return (
-		<>
+		<section className='container'>
 			{items.length ? (
 				<Grid
 					templateAreas={`"header header"
@@ -87,7 +87,7 @@ const Checkout: FC<{ products: IProduct[] | IProducts[] }> = ({
 			) : (
 				<Heading>Not Products</Heading>
 			)}
-		</>
+		</section>
 	)
 }
 

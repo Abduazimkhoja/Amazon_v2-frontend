@@ -4,7 +4,7 @@ import cn from 'clsx'
 import type { FC } from 'react'
 import { TransitionGroup } from 'react-transition-group'
 import { CSSTransitionClassNames } from 'react-transition-group/CSSTransition'
-import { CSSTransition } from '../CSSTransitionGroup'
+import { CSSTransition } from '@/ui/CSSTransitionGroup'
 import CarouselNavigation from './CarouselNavigation'
 import { ICarouselItem } from './carouse.interface'
 
@@ -42,7 +42,7 @@ const Carousel: FC<ICarousel> = ({ items, className = '' }) => {
 	}
 
 	return (
-		<section className={cn(className, 'relative')}>
+		<section className={cn(className, 'relative', 'container')}>
 			<CarouselNavigation />
 			<TransitionGroup className='relative h-56'>
 				<CSSTransition

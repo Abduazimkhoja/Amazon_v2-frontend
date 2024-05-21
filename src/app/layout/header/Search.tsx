@@ -1,6 +1,5 @@
 'use client'
 import { useFilters } from '@/app/explorer/useFilters'
-import { useActions } from '@/hooks/useActions'
 import {
 	Button,
 	FormControl,
@@ -10,7 +9,7 @@ import {
 	InputRightAddon
 } from '@chakra-ui/react'
 import { usePathname, useRouter } from 'next/navigation'
-import { FC, useRef } from 'react'
+import { FC } from 'react'
 import { BiSearchAlt } from 'react-icons/bi'
 
 const Search: FC = () => {
