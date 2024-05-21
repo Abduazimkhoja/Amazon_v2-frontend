@@ -1,6 +1,7 @@
 'use client'
 import { useCart } from '@/hooks/useCart'
 import SquareButton from '@/ui/button/SquareButton'
+import { Tooltip } from '@chakra-ui/react'
 
 import Link from 'next/link'
 import type { FC } from 'react'
@@ -10,9 +11,11 @@ const Cart: FC = () => {
 	const { length } = useCart()
 
 	return (
-		<Link href='/checkout' className='relative'>
-			<SquareButton Icon={RiShoppingCartLine} number={length} />
-		</Link>
+		<Tooltip label='Cart'>
+			<Link href='/checkout' className='relative'>
+				<SquareButton Icon={RiShoppingCartLine} number={length} />
+			</Link>
+		</Tooltip>
 	)
 }
 
