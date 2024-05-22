@@ -1,4 +1,5 @@
 import Home from '@/app/Home'
+import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product/product.service'
 import type { Metadata } from 'next'
 import type { FC } from 'react'
@@ -13,20 +14,22 @@ export const revalidate = 60
 
 // REQUEST
 async function getProducts() {
-	const data = await ProductService.getAll({
+	const products = await ProductService.getAll({
 		minify: true,
 		page: '1',
 		perPage: 8,
 		ratings: ''
 	})
 
-	return data
+	const categoryProducts = await CategoryService.getCategoryProducts()
+
+	return {products, categoryProducts}
 }
 // PAGE
 const HomePage: FC = async () => {
-	const { products, length } = await getProducts()
+	const data = await getProducts()
 
-	return <Home products={products} length={length} />
+	return <Home  {...data}/>
 }
 
 export default HomePage
