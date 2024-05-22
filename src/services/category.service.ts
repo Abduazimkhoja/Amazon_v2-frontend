@@ -1,5 +1,6 @@
 import { instance } from '@/api/api.interceptor'
-import { ICategory } from '@/types/category.interface'
+import { ProductService } from '@/services/product/product.service'
+import { ICategory, ICategoryProduct } from '@/types/category.interface'
 
 const CATEGORIES = 'categories'
 
@@ -24,6 +25,28 @@ export const CategoryService = {
 		})
 	},
 
+	async getCategoryProducts() {
+		const categories = await instance<ICategory[]>({
+			url: CATEGORIES,
+			method: 'GET'
+		})
+
+		let categoryProducts: ICategoryProduct[] = []
+
+		const promises = categories.data.map(async ({ slug, name }) => {
+			const { data: productByCategory } =
+				await ProductService.getByCategory(slug)
+			categoryProducts.push({ title: name, products: productByCategory })
+		})
+
+		// Wait for all promises to complete
+		await Promise.all(promises)
+
+		console.log('category', categoryProducts)
+
+		return categoryProducts
+	},
+
 	async create() {
 		return instance<ICategory>({
 			url: CATEGORIES,
@@ -38,7 +61,7 @@ export const CategoryService = {
 			data: { name }
 		})
 	},
-	
+
 	async delete(id: string | number) {
 		return instance<ICategory>({
 			url: `${CATEGORIES}/${id}`,
