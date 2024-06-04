@@ -1,5 +1,5 @@
 import { ProductService } from '@/services/product/product.service'
-import { TypeParamSLug, iPageSlugParam } from '@/types/page-params'
+import { IPageSlugParam, TypeParamSLug } from '@/types/page-params'
 import type { Metadata } from 'next'
 import Product from './Product'
 
@@ -30,7 +30,7 @@ async function getProduct(params: TypeParamSLug) {
 
 export async function generateMetadata({
 	params
-}: iPageSlugParam): Promise<Metadata> {
+}: IPageSlugParam): Promise<Metadata> {
 	const { product } = await getProduct(params)
 
 	return {
@@ -44,7 +44,7 @@ export async function generateMetadata({
 	}
 }
 
-export default async function ProductPage({ params }: iPageSlugParam) {
+export default async function ProductPage({ params }: IPageSlugParam) {
 	const { product, similarProducts } = await getProduct(params)
 
 	return (
