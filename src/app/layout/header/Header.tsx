@@ -1,3 +1,4 @@
+'use client'
 import Logo from '@/ui/logo/Logo'
 import Link from 'next/link'
 import type { FC } from 'react'
@@ -7,8 +8,12 @@ import HeaderProfile from './HeaderProfile'
 import Search from './Search'
 import HeaderCart from './cart/HeaderCart'
 import { Tooltip } from '@chakra-ui/react'
+import { usePathname } from 'next/navigation'
 
 const Header: FC = () => {
+	const pathname = usePathname()
+	if (pathname === '/auth') return null
+  
 	return (
 		<div className=' bg-secondary w-full'>
 			<header className='container px-5 py-1 grid grid-cols-[auto,1fr,auto] items-center gap-4 '>
