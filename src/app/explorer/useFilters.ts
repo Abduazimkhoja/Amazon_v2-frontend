@@ -29,7 +29,7 @@ export const useFilters = () => {
 	) => {
 		const newParams = new URLSearchParams(searchParams.toString())
 
-		if (value) {
+		if (!!value) {
 			newParams.set(key, String(value))
 		} else {
 			newParams.delete(key)
