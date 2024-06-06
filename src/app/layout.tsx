@@ -2,7 +2,7 @@ import '@/assets/styles/globals.scss'
 import { getSiteUrl } from '@/config/url.config'
 import { SITE_NAME } from '@/constants/seo.constants'
 import Providers from '@/providers/Providers'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Golos_Text } from 'next/font/google'
 import Header from './layout/header/Header'
 
@@ -13,6 +13,13 @@ const golos = Golos_Text({
 	style: ['normal'],
 	variable: '--font-golos'
 })
+
+export const viewport: Viewport = {
+	themeColor: 'black',
+	width: '1600px',
+  userScalable: false,
+	initialScale: 0
+}
 
 export const metadata: Metadata = {
 	title: {
