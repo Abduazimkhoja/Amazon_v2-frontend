@@ -31,6 +31,33 @@ export const metadata: Metadata = {
 		type: 'website',
 		siteName: SITE_NAME,
 		emails: ['info@amazon.com']
+	},
+	icons: {
+		apple: '/favicon/apple-touch-icon.png',
+		icon: [
+			{
+				url: '/favicon/favicon-32x32.png',
+				sizes: '32x32',
+				type: 'image/png'
+			},
+			{
+				url: '/favicon/favicon-16x16.png',
+				sizes: '16x16',
+				type: 'image/png'
+			}
+		],
+		other: [
+			{
+				rel: 'mask-icon',
+				url: '/favicon/safari-pinned-tab.svg',
+				color: '#5bbad5'
+			}
+		]
+	},
+	themeColor: '#ffffff',
+	other: {
+		'msapplication-TileColor': '#00aba9',
+		'msapplication-TileImage': '/favicon/mstile-144x144.png'
 	}
 }
 
@@ -43,13 +70,8 @@ export default function RootLayout({
 		<html lang='en' className={golos.className}>
 			<body className='bg-bg-color'>
 				<Providers>
-					<div>
-						<Header />
-						{/* <div className='grid' style={{ gridTemplateColumns: '1fr 6fr' }}> */}
-						{/* <Sidebar /> */}
-						<main className='pt-8 pb-52'>{children}</main>
-						{/* </div> */}
-					</div>
+					<Header />
+					<main className='pt-8 pb-52'>{children}</main>
 				</Providers>
 				<div id='modal'></div>
 			</body>
