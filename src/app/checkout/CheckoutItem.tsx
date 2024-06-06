@@ -96,7 +96,7 @@ const CheckoutItem: FC<{
 					paddingBlock='4'
 					justifyContent='space-between'
 				>
-					<CartActions itemId={itemId} />
+					<CartActions productId={itemId} />
 
 					<Text paddingBlock='2' fontWeight='600' fontSize='2xl'>
 						{convertPrice(commonPrice)}

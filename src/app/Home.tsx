@@ -12,7 +12,7 @@ const Home: FC<{
 }> = ({ products, categoryProducts }) => {
 	return (
 		<>
-			<Carousel items={carouselItems} className='mb-10' />
+			{/* <Carousel items={carouselItems} className='mb-10' /> */}
 			<Catalog title='Fresh products' products={products.products} />
 			{categoryProducts.map((offerProduct) => {
 				return <Offer {...offerProduct}/>

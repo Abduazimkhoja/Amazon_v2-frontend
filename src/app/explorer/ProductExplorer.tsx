@@ -1,17 +1,31 @@
 'use client'
+import { BiFilterAlt } from 'react-icons/bi'
 import { ProductService } from '@/services/product/product.service'
 import { TypePaginationProducts } from '@/types/product.interface'
 import Heading from '@/ui/Heading'
-import Button from '@/ui/button/Button'
 import Catalog from '@/ui/catalog/Catalog'
+import {
+	Button,
+	Drawer,
+	DrawerBody,
+	DrawerCloseButton,
+	DrawerContent,
+	DrawerFooter,
+	DrawerHeader,
+	DrawerOverlay,
+	Grid,
+	GridItem,
+	Input,
+	useDisclosure
+} from '@chakra-ui/react'
 import { useQuery } from '@tanstack/react-query'
 import cn from 'clsx'
-import { FC, useState } from 'react'
+import { FC, useRef, useState } from 'react'
 import styles from './ProductExplorer.module.scss'
+import Filters from './filters/Filters'
 import { Pagination } from './pagination/Pagination'
 import SortDropdown from './sort/SortDropdown'
 import { useFilters } from './useFilters'
-import Filters from './filters/Filters'
 
 interface IProductExplorer {
 	initialProducts: TypePaginationProducts
@@ -19,6 +33,8 @@ interface IProductExplorer {
 
 export const ProductExplorer: FC<IProductExplorer> = ({ initialProducts }) => {
 	const [isFilterOpen, setIsFilterOpen] = useState(false)
+	const { isOpen, onOpen, onClose } = useDisclosure()
+	const btnRef = useRef<HTMLButtonElement>(null)
 
 	const { isFilterUpdated, queryParams, updateQueryParams } = useFilters()
 
@@ -34,38 +50,53 @@ export const ProductExplorer: FC<IProductExplorer> = ({ initialProducts }) => {
 		: 'Explorer'
 
 	return (
-		<>
-			<div className='flex item-center justify-between mb-7'>
-				<Heading>{isSearchTerm}</Heading>
-				<SortDropdown />
-			</div>
-			<Button
-				option='white'
-				onClick={() => setIsFilterOpen(!isFilterOpen)}
-				className='mb-7'
-			>
-				{isFilterOpen ? 'Close' : 'Open'} filters
-			</Button>
-			<div
-				className={cn(styles.explorer, {
-					[styles.filterOpened]: isFilterOpen
-				})}
-			>
-				<aside>
-					<Filters />
-				</aside>
+		<div className='container'>
+			<Grid mb='8' gridTemplateColumns={'1fr auto auto'} gap='3'>
+				<GridItem>
+					<Heading>{isSearchTerm}</Heading>
+				</GridItem>
+				<GridItem>
+					<Button ref={btnRef} colorScheme='orange' onClick={onOpen}>
+						Filter <BiFilterAlt />
+					</Button>
+				</GridItem>
 
-				<section>
-					<Catalog products={data.products} isLoading={isFetching} />
-					{!isFetching && (
-						<Pagination
-							changePage={page => updateQueryParams('page', `${page}`)}
-							currentPage={queryParams.page}
-							numberPages={data.length / +queryParams.perPage}
-						/>
-					)}
-				</section>
-			</div>
-		</>
+				<GridItem>
+					<SortDropdown />
+				</GridItem>
+			</Grid>
+
+			<Drawer
+      size='sm'
+				isOpen={isOpen}
+				placement='right'
+				onClose={onClose}
+				finalFocusRef={btnRef}
+			>
+				<DrawerOverlay />
+				<DrawerContent
+					// backdropFilter='blur(10px)'
+					// backgroundColor='rgba(255,255,255, .7)'
+				>
+					<DrawerCloseButton />
+					<DrawerHeader>Filter</DrawerHeader>
+
+					<DrawerBody>
+						<Filters />
+					</DrawerBody>
+				</DrawerContent>
+			</Drawer>
+
+			<section className={cn(styles.explorer)}>
+				<Catalog products={data.products} isLoading={isFetching} />
+				{!isFetching && (
+					<Pagination
+						changePage={page => updateQueryParams('page', `${page}`)}
+						currentPage={queryParams.page}
+						numberPages={data.length / +queryParams.perPage}
+					/>
+				)}
+			</section>
+		</div>
 	)
 }
