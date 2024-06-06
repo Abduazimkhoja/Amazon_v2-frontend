@@ -2,47 +2,46 @@
 
 import { useCategories } from '@/hooks/queries/useCategories'
 import Loader from '@/ui/Loader'
-import Checkbox, { ICheckbox } from '@/ui/checkbox/Checkbox'
+import { Grid, Radio, RadioGroup } from '@chakra-ui/react'
 import type { FC } from 'react'
 import { useFilters } from '../../useFilters'
 import FilterWrapper from '../FilterWrapper'
 
 const CategoryGroup: FC = () => {
 	const { queryParams, updateQueryParams } = useFilters()
-	const { data, isLoading } = useCategories()
+	const { data: categories, isLoading } = useCategories()
 
-	const checkboxProps = (categoryId: number) => {
-		const categoryIdStr = categoryId.toString()
-		const isChecked = queryParams.categoryId === categoryIdStr
-		return {
-			isChecked: isChecked,
-			onClick: () =>
-				updateQueryParams('categoryId', isChecked ? '' : categoryIdStr),
-			key: categoryId,
-			className: 'mb-2 text-sm'
-		} as ICheckbox
-	}
-
-	if (isLoading) {
+	if (isLoading || !categories?.length) {
 		return (
 			<FilterWrapper title='Category'>
-				<Loader />
+				{isLoading && <Loader />}
+				{!categories?.length && <p>Category not found</p>}
 			</FilterWrapper>
 		)
 	}
 
-	const getCategoryCheckboxList = () => {
-		if (!data?.length) return <p>Category not found</p>
-
-		const checkboxList = data?.map(category => (
-			<Checkbox {...checkboxProps(category.id)}>{category.name}</Checkbox>
-		))
-
-		return checkboxList
+	const handleChange = (categoryId: string) => {
+		if (categoryId == 'all') return updateQueryParams('categoryId', '')
+		const isChecked = queryParams.categoryId === categoryId
+		updateQueryParams('categoryId', isChecked ? '' : categoryId)
 	}
 
 	return (
-		<FilterWrapper title='Category'>{getCategoryCheckboxList()}</FilterWrapper>
+		<FilterWrapper title='Category'>
+			<RadioGroup
+				onChange={handleChange}
+				value={queryParams.categoryId || 'all'}
+			>
+				<Grid templateColumns='1fr 1fr 1fr' gap='2'>
+					<Radio value={'all'}>All</Radio>
+					{categories.map(category => (
+						<Radio key={category.id} value={String(category.id)}>
+							{category.name}
+						</Radio>
+					))}
+				</Grid>
+			</RadioGroup>
+		</FilterWrapper>
 	)
 }
 

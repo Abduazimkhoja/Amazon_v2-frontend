@@ -9,7 +9,7 @@ const PriceGroup: FC = () => {
 	const { queryParams, updateQueryParams } = useFilters()
 
 	const rangeProps: IRange = {
-		max: 200,
+		max: 10000,
 		fromInitialValue: queryParams.minPrice,
 		toInitialValue: queryParams.maxPrice,
 		onChangeFromValue: value => updateQueryParams('minPrice', value),
