@@ -3,13 +3,13 @@ import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
 import { Button, HStack, Input, useNumberInput } from '@chakra-ui/react'
 import { useEffect, type FC } from 'react'
-import { FiMinus, FiPlus } from 'react-icons/fi'
 
-const CartActions: FC<{ itemId: number }> = ({ itemId }) => {
+const CartActions: FC<{ productId: number }> = ({ productId }) => {
 	const { changeQuantity } = useActions()
 	const { items } = useCart()
 
-	const quantity = items.find(cartItem => cartItem.id === itemId)?.quantity || 1
+	const quantity =
+		items.find(cartItem => cartItem.id === productId)?.quantity || 1
 
 	const {
 		valueAsNumber,
@@ -29,7 +29,7 @@ const CartActions: FC<{ itemId: number }> = ({ itemId }) => {
 	useEffect(() => {
 		if (isNaN(valueAsNumber)) return undefined
 		changeQuantity({
-			id: itemId,
+			id: productId,
 			type: 'assign',
 			value: valueAsNumber
 		})
