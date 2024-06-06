@@ -42,8 +42,6 @@ export const CategoryService = {
 		// Wait for all promises to complete
 		await Promise.all(promises)
 
-		console.log('category', categoryProducts)
-
 		return categoryProducts
 	},
 
