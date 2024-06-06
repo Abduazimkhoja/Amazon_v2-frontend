@@ -32,33 +32,33 @@ export const metadata: Metadata = {
 		siteName: SITE_NAME,
 		emails: ['info@amazon.com']
 	},
-	// icons: {
-	// 	apple: '/apple-touch-icon.png',
-	// 	icon: [
-	// 		{
-	// 			url: '/favicon-32x32.png',
-	// 			sizes: '32x32',
-	// 			type: 'image/png'
-	// 		},
-	// 		{
-	// 			url: '/favicon-16x16.png',
-	// 			sizes: '16x16',
-	// 			type: 'image/png'
-	// 		}
-	// 	],
-	// 	other: [
-	// 		{
-	// 			rel: 'mask-icon',
-	// 			url: '/safari-pinned-tab.svg',
-	// 			color: '#5bbad5'
-	// 		}
-	// 	]
-	// },
-	// themeColor: '#ffffff',
-	// other: {
-	// 	'msapplication-TileColor': '#00aba9',
-	// 	'msapplication-TileImage': '/mstile-144x144.png'
-	// }
+	icons: {
+		apple: '/apple-touch-icon.png',
+		icon: [
+			{
+				url: '/favicon-32x32.png',
+				sizes: '32x32',
+				type: 'image/png'
+			},
+			{
+				url: '/favicon-16x16.png',
+				sizes: '16x16',
+				type: 'image/png'
+			}
+		],
+		other: [
+			{
+				rel: 'mask-icon',
+				url: '/safari-pinned-tab.svg',
+				color: '#5bbad5'
+			}
+		]
+	},
+	themeColor: '#ffffff',
+	other: {
+		'msapplication-TileColor': '#00aba9',
+		'msapplication-TileImage': '/mstile-144x144.png'
+	}
 }
 
 export default function RootLayout({
