@@ -1,7 +1,16 @@
 'use client'
 import { useDebounce } from '@/hooks/useDebounce'
+import {
+	Box,
+	Flex,
+	NumberInput,
+	NumberInputField,
+	RangeSlider,
+	RangeSliderFilledTrack,
+	RangeSliderThumb,
+	RangeSliderTrack
+} from '@chakra-ui/react'
 import { FC, useEffect, useState } from 'react'
-import styles from './Range.module.scss'
 
 export interface IRange {
 	min?: number
@@ -13,7 +22,7 @@ export interface IRange {
 }
 
 export const Range: FC<IRange> = ({
-	min = 0,
+	min = 1,
 	max,
 	fromInitialValue,
 	toInitialValue,
@@ -25,6 +34,10 @@ export const Range: FC<IRange> = ({
 
 	const debouncedFromValue = useDebounce(fromValue, 500)
 	const debouncedToValue = useDebounce(toValue, 500)
+	const handleChange = (value: number[]) => {
+		setFromValue(value[0].toString())
+		setToValue(value[1].toString())
+	}
 
 	useEffect(() => {
 		onChangeFromValue(debouncedFromValue)
@@ -35,24 +48,42 @@ export const Range: FC<IRange> = ({
 	}, [debouncedToValue])
 
 	return (
-		<div className={styles.range}>
-			<input
-				type='number'
+		<Box>
+			<Flex gap='4' mb='2'>
+				<NumberInput
+					onChange={value => setFromValue(value)}
+					value={fromValue}
+					min={min}
+					max={max}
+					_placeholder='From'
+				>
+					<NumberInputField bg='white' />
+				</NumberInput>
+				<NumberInput
+					onChange={value => setToValue(value)}
+					value={toValue}
+					min={min}
+					max={max}
+					_placeholder='To'
+				>
+					<NumberInputField bg='white' />
+				</NumberInput>
+			</Flex>
+			<RangeSlider
 				min={min}
 				max={max}
-				placeholder='From'
-				value={fromValue}
-				onChange={e => setFromValue(e.target.value)}
-			/>
-			<input
-				type='number'
-				min={min}
-				max={max}
-				placeholder='To'
-				value={toValue}
-				onChange={e => setToValue(e.target.value)}
-			/>
-		</div>
+				focusThumbOnChange={false}
+				value={[+fromValue, +toValue]}
+				onChange={handleChange}
+				aria-label={['min', 'max']}
+			>
+				<RangeSliderTrack>
+					<RangeSliderFilledTrack />
+				</RangeSliderTrack>
+				<RangeSliderThumb index={0} />
+				<RangeSliderThumb index={1} />
+			</RangeSlider>
+		</Box>
 	)
 }
 
