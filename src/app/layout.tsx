@@ -5,6 +5,7 @@ import Providers from '@/providers/Providers'
 import type { Metadata, Viewport } from 'next'
 import { Golos_Text } from 'next/font/google'
 import Header from './layout/header/Header'
+import { Grid } from '@chakra-ui/react'
 
 const golos = Golos_Text({
 	weight: ['400', '500', '600', '700'],
@@ -79,8 +80,11 @@ export default function RootLayout({
 		<html lang='en' className={golos.className}>
 			<body className='bg-bg-color'>
 				<Providers>
-					<Header />
-					<main className='pt-8 pb-52'>{children}</main>
+					<Grid templateRows='auto 1fr auto' className='min-h-dvh'>
+						<Header />
+						<main className='pt-8'>{children}</main>
+						<footer className='pb-52'></footer>
+					</Grid>
 				</Providers>
 				<div id='modal'></div>
 			</body>
