@@ -13,8 +13,8 @@ export const useAdminReviews = () => {
 			data.map((review): IListItem => {
 				return {
 					id: review.id,
-					viewUrl: `/reviews/${review.id}`,
-					editUrl: getAdminUrl(`/reviews/edit/${review.id}`),
+					viewUrl: `/admin/reviews/${review.id}`,
+					editUrl: getAdminUrl(`/admin/reviews/edit/${review.id}`),
 					items: [
 						`${review.id}`,
 						arrayGenerator(review.rating)
