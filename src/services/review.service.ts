@@ -16,6 +16,13 @@ export const ReviewService = {
 		})
 	},
 
+	async getById(reviewId: string | number) {
+		return instance<IReview>({
+			url: `${REVIEWS}/${reviewId}`,
+			method: 'GET'
+		})
+	},
+
 	async getAverageByProduct(productId: string | number) {
 		return instance<number>({
 			url: `${REVIEWS}/average-by-product/${productId}`,
