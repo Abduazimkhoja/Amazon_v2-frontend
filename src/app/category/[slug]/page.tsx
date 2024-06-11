@@ -1,6 +1,6 @@
 import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product/product.service'
-import { TypeParamSLug, iPageSlugParam } from '@/types/page-params'
+import { IPageSlugParam, TypeParamSLug } from '@/types/page-params'
 import Catalog from '@/ui/catalog/Catalog'
 
 import type { Metadata } from 'next'
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
 	params
-}: iPageSlugParam): Promise<Metadata> {
+}: IPageSlugParam): Promise<Metadata> {
 	const { category, products } = await getProducts(params)
 
 	return {
