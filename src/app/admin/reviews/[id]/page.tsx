@@ -43,6 +43,6 @@ async function getReview(params: TypeParamId) {
 
 export default async function ReviewPage({ params }: IPageIdParam) {
 	const review = await getReview(params)
-	console.log('❌length: ', review?.id)
+	console.log('❌length: ', review?.data.id)
 	return <div> review</div>
 }
