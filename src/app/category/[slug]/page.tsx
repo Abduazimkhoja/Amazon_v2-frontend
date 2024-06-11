@@ -45,7 +45,7 @@ async function getProducts(params: TypeParamSLug) {
 	return { products, category }
 }
 
-export default async function CategoryPage({ params }: iPageSlugParam) {
+export default async function CategoryPage({ params }: IPageSlugParam) {
 	const { products, category } = await getProducts(params)
 
 	return (
