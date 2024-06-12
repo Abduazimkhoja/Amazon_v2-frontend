@@ -30,3 +30,12 @@ export enum EnumProductSort {
 export type TypeParamsFilters = {
 	searchParams: TypeProductDataFilters
 }
+
+export type TypeCreateProductForm = {
+	price: number
+	categoryId: number
+	name: string
+	description?: string
+	images: { url: string }[]
+	newImage: string
+}
